@@ -1,33 +1,45 @@
 var CARS_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
 productList = ""
-htmlContentToAppend = 
-fetch (CARS_URL)
-    .then(function (res){
-        return res.json();
-    })
-    .then(function(data) {
-        productList = data.products;
-    });
+
+
     
-function showProducts(){
+function showProducts(list){
+    let htmlContentToAppend = "";
  for (let i=0; i < productList.length; i++){
-     console.log("1")
-     htmlContentToAppend += `
-     <div class="productos contenedor">
-         <div class="fila">
-             <div>
-                 <img src="` + productList[i].image + `" alt="product image" class="img-thumbnail">
-             </div>
-             <div class="col">
-                 
-             </div>
-         </div>
-     </div>
-     `
-     document.getElementById("container-product-list").innerHTML = htmlContentToAppend; 
-      
+    let product = list[i]
+     
+    htmlContentToAppend += `
+        <div class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + product.image + `" alt="product image" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="mb-1">
+                        <h4>`+ product.name +`</h4> 
+                        <p> `+ product.description +`</p> 
+                        <br> <br>
+                        <h3 class="mb-1"> $` + product.cost + ` ` + product.currency +`</h3> 
+                        </div>
+                        <small class="text-muted">` + product.soldCount + ` vendidos</small> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        `
+     document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
  }
 }
 
-
-
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(CARS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            productList = resultObj.data.products;
+            console.log(productList)
+            showProducts(productList);
+        }
+    });
+});
