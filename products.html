@@ -10,6 +10,9 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
 </head>
 
 <body>
@@ -37,10 +40,17 @@
     </div>
   </nav>
   <main class="pb-5 container">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div id="container-product-list">
+      <div class="productos contenedor">
+        <div class="fila">
+            <div>
+               <img src="` + product.image + `"class="img-thumbnail">
+            </div>
+        </div>
+    </div>
+    `  
+
+    
     </div>
   </main>
   <footer class="text-muted">
@@ -61,9 +71,7 @@
       <div></div>
     </div>
   </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
+  
 </body>
 
 </html>
