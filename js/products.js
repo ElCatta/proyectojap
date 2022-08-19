@@ -1,5 +1,5 @@
-var CARS_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json"
-productList = ""
+let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
+let productList = ""
 
 
     
@@ -34,7 +34,7 @@ function showProducts(list){
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(CARS_URL).then(function(resultObj){
+    getJSONData(PRODUCTS_API).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productList = resultObj.data.products;
