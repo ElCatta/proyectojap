@@ -98,16 +98,16 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <main class="form-signin w-100 m-auto">
-    <form action="home.html">
+    <form action="home.html" onsubmit="loginSuccess()">
       <img class="mb-4" src="img/login.png" alt="">
       <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
   
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required autocomplete>
         <label for="floatingInput">Correo electrónico</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required autocomplete>
         <label for="floatingPassword">Contraseña</label>
       </div>
   
