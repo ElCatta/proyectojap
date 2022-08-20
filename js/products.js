@@ -1,8 +1,11 @@
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
+let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"
+}   
+ function catText(){
+    document.getElementById("catName").innerText = catNames[localStorage.getItem("catID")]
+}
 
-
-    
 function showProducts(list){
     let htmlContentToAppend = "";
  for (let i=0; i < productList.length; i++){
@@ -29,7 +32,8 @@ function showProducts(list){
             </div>
         </div>
         `
-     document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
+    document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
+    catText();
  }
 }
 
