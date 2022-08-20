@@ -42,6 +42,23 @@
     </div>
   </nav>
   <main class="pb-5 container">
+    <div class="text-center p-4">
+      <h2 id="catName"></h2>
+      <p class="lead">Verás aquí todas las categorías del sitio.</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <input type="radio" class="btn-check" name="options" id="sortAsc">
+            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <input type="radio" class="btn-check" name="options" id="sortDesc">
+            <label class="btn btn-light" for="sortDesc">Z-A</label>
+            <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+          </div>
+        </div>
+      </div>
     <div id="container-product-list">
       <div class="productos contenedor">
         <div class="fila">
@@ -50,7 +67,7 @@
             </div>
         </div>
     </div>
-    `  
+
 
     
     </div>
