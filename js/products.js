@@ -33,7 +33,6 @@ function showProducts(list){
     let htmlContentToAppend = "";
  for (let i=0; i < productList.length; i++){
     let product = list[i]
-    if (product)
     htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
             <div class="row">
