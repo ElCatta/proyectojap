@@ -1,12 +1,9 @@
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
 let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"
-}   
-let sortingStatus, filterStatus = false
-
+}   ;
+let sortingStatus, filterStatus = false;
 // SORTING AND FILTERING FUNCTIONALITIES
-
-
 
 function sortByPriceDesc(a,b){
     return a.cost - b.cost  
@@ -20,22 +17,29 @@ function sortByRel(a,b){
     return b.soldCount - a.soldCount
 }
 
-
 function productSortMore(){
-    showProducts([...productList].sort(sortByPriceDesc))
+    showProducts([...productList].sort(sortByPriceDesc));
 }
-
 
 function productSortLess(){
-    showProducts([...productList].sort(sortByPriceAsc))
+    showProducts([...productList].sort(sortByPriceAsc));
 }
-
 
 function productSortRel(){
-    showProducts([...productList].sort(sortByRel))
+    showProducts([...productList].sort(sortByRel));
 }
 
-
+function filterByRange(){
+    let filteredList = []
+    for(let i = 0; i < productList.length; i++){
+        let product = productList[i];
+        if (product.cost > document.getElementById("rangeMin").value && product.cost < document.getElementById("rangeMax").value)
+        {
+            filteredList.push(product);
+        }
+    }
+    showProducts(filteredList)
+}
 
 
 // PRODUCTS PRINTER

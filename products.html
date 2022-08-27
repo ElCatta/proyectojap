@@ -51,11 +51,11 @@
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
-            <label class="btn btn-light" for="sortDesc">+Precio</label>
+            <label class="btn btn-light" for="sortDesc">Mas caro</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
-            <label class="btn btn-light" id="lessLabel" for="sortAsc">-Precio</label>
+            <label class="btn btn-light" id="lessLabel" for="sortAsc">Mas barato</label>
             <input type="radio" class="btn-check" name="options" id="sortRel" onclick="productSortRel()">
-            <label class="btn btn-light" id="relLabel" for="sortRel">Ordenar por relevancia</label>
+            <label class="btn btn-light" id="relLabel" for="sortRel">Por relevancia</label>
           </div>
         </div>
       </div>
@@ -66,14 +66,14 @@
               <p class="font-weight-normal text-end my-2">Rango de precio</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeMin">
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+              <input class="form-control" type="number" placeholder="máx." id="rangeMax">
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCost" onclick="priceFiltering()">Filtrar</button>
+                <button class="btn btn-light btn-block" id="rangeFilterCost" onclick="filterByRange()">Filtrar</button>
                 <button class="btn btn-outline-dark" id="clearFilters" onclick="showProducts(productList)">Limpiar</button> 
               </div>
             </div>
