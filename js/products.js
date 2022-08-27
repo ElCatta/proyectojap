@@ -4,37 +4,45 @@ let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",
 }   
 let sortingStatus, filterStatus = false
 
-
-
-
-
 // SORTING AND FILTERING FUNCTIONALITIES
 
-function quantitySortingMethod(a,b){
+
+
+function sortByPriceDesc(a,b){
+    return a.cost - b.cost  
+}
+
+function sortByPriceAsc(a,b){
+    return b.cost - a.cost
+}
+
+function sortByRel(a,b){
     return b.soldCount - a.soldCount
 }
 
-function productSortButton(){
-    if (sortingStatus == false){
-        sortingStatus = true;
-        document.getElementById("sortLabel").classList.add("btn-outline-dark");
-        showProducts([...productList].sort(quantitySortingMethod))
-    } else { 
-        document.getElementById("sortLabel").classList.remove("btn-outline-dark")
-        sortingStatus = false
-        showProducts(productList)
-    }
+
+function productSortMore(){
+    showProducts([...productList].sort(sortByPriceDesc))
 }
 
-function priceFiltering(){
-    
+
+function productSortLess(){
+    showProducts([...productList].sort(sortByPriceAsc))
 }
+
+
+function productSortRel(){
+    showProducts([...productList].sort(sortByRel))
+}
+
+
+
 
 // PRODUCTS PRINTER
 
 function showProducts(list){
     let htmlContentToAppend = "";
- for (let i=0; i < productList.length; i++){
+ for (let i=0; i < list.length; i++){
     let product = list[i]
     htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
@@ -62,7 +70,7 @@ function showProducts(list){
  }
 }
 
-// SHOW CURRENT CATEGORY
+// SHOW CURRENT CATEGORY TEXT
 
 function catText(){
     document.getElementById("catName").innerText = catNames[localStorage.getItem("catID")]
