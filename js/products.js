@@ -5,6 +5,9 @@ let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",
 let sortingStatus, filterStatus = false
 
 
+
+
+
 // SORTING AND FILTERING FUNCTIONALITIES
 
 function quantitySortingMethod(a,b){
