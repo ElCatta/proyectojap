@@ -9,9 +9,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/products.js"></script>
+  
 </head>
 
 <body>
@@ -49,6 +47,11 @@
     <div class="container">
       <div class="row">
         <div class="col text-end">
+          <div class="input-group input-group-sm mb-5">
+            <div class="input-group-prepend">
+            </div>
+            <input type="search" id="browseBar" class="form-control" aria-label="Small" placeholder="Haz una búsqueda" aria-describedby="inputGroup-sizing-sm" placeholder="Realiza una búsqueda">
+          </div>
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
             <label class="btn btn-light" for="sortDesc">Mas caro</label>
@@ -73,8 +76,8 @@
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCost" onclick="filterByRange()">Filtrar</button>
-                <button class="btn btn-outline-dark" id="clearFilters" onclick="showProducts(productList)">Limpiar</button> 
+                <button class="btn btn-light btn-block" id="rangeFilterCost" onclick="searchAndFilter()">Filtrar</button>
+                <button class="btn btn-outline-dark" id="clearFilters" onclick="productsClean()">Limpiar</button> 
               </div>
             </div>
           </div>
@@ -88,8 +91,6 @@
             </div>
         </div>
     </div>
-
-
     
     </div>
   </main>
@@ -112,6 +113,10 @@
     </div>
   </div>
   
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/products.js"></script>
+
 </body>
 
 </html>

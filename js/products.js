@@ -3,7 +3,12 @@ let productList = ""
 let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"
 }   ;
 let sortingStatus, filterStatus = false;
-// SORTING AND FILTERING FUNCTIONALITIES
+let searchBar = document.getElementById('browseBar');
+
+
+
+
+// SORTING FUNCTIONALITIES
 
 function sortByPriceDesc(a,b){
     return a.cost - b.cost  
@@ -18,28 +23,24 @@ function sortByRel(a,b){
 }
 
 function productSortMore(){
-    showProducts([...productList].sort(sortByPriceDesc));
+    showProducts(productList.sort(sortByPriceDesc));
 }
 
 function productSortLess(){
-    showProducts([...productList].sort(sortByPriceAsc));
+    showProducts(productList.sort(sortByPriceAsc));
 }
 
 function productSortRel(){
-    showProducts([...productList].sort(sortByRel));
+    showProducts(productList.sort(sortByRel));
 }
 
-function filterByRange(){
-    let filteredList = []
-    for(let i = 0; i < productList.length; i++){
-        let product = productList[i];
-        if (product.cost > document.getElementById("rangeMin").value && product.cost < document.getElementById("rangeMax").value)
-        {
-            filteredList.push(product);
-        }
-    }
-    showProducts(filteredList)
+function productsClean(){
+    showProducts(productList);
+    document.getElementById("rangeMin").value = undefined;
+    document.getElementById("rangeMax").value = undefined;
+    search()
 }
+
 
 
 // PRODUCTS PRINTER
@@ -69,9 +70,9 @@ function showProducts(list){
             </div>
         </div>
         `
-    document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
-    catText();
  }
+ document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
+    catText();
 }
 
 // SHOW CURRENT CATEGORY TEXT
@@ -93,3 +94,22 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
+// FILTRO Y DESAFIATE(BUSQUEDA)
+
+function searchAndFilter(){
+    items = [];
+    for (let i=0; i < productList.length; i++){
+            product = productList[i]
+        if ((searchBar.value == "" || product.name.toLowerCase().includes(searchBar.value.toLowerCase()) || 
+            product.description.toLowerCase().includes(searchBar.value.toLowerCase())) && 
+            ((document.getElementById("rangeMin").value == '' || product.cost > document.getElementById("rangeMin").value) && 
+            (document.getElementById("rangeMax").value == '' || product.cost < document.getElementById("rangeMax").value)))
+        {
+            items.push(product)
+        } 
+    }
+    showProducts(items)
+    }
+
+    
+searchBar.addEventListener('input', searchAndFilter)
