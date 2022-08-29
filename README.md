@@ -1,2 +1,2 @@
 # indvprojectjap.github.io
-Workplace inicial de la primera entrega de JaP
+Proyecto Ecommerce para JaP 2022 Desarollo Web
