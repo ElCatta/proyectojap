@@ -2,9 +2,9 @@ let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
 let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"
 }   ;
-let sortingStatus, filterStatus = false;
-let searchBar = document.getElementById('browseBar');
-
+let rangeMin = document.getElementById("rangeMin")
+let rangeMax = document.getElementById("rangeMax")
+let searchBar = document.getElementById('browseBar')
 
 
 
@@ -41,6 +41,23 @@ function productsClean(){
     search()
 }
 
+// FILTRO Y DESAFIATE(BUSQUEDA)
+
+function searchAndFilter(){
+    let filteredProducts = productList;
+    
+    if(rangeMin.value != ""){
+        filteredProducts = filteredProducts.filter(product => 
+        product.cost > rangeMin.value)};
+    if(rangeMax.value != ""){
+        filteredProducts = filteredProducts.filter(product => 
+        product.cost < rangeMax.value)};
+    if(searchBar.value != ""){
+        filteredProducts = filteredProducts.filter(product => 
+        product.name.toLowerCase().includes(searchBar.value.toLowerCase()))}
+
+    showProducts(filteredProducts)
+}
 
 
 // PRODUCTS PRINTER
@@ -94,22 +111,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-// FILTRO Y DESAFIATE(BUSQUEDA)
 
-function searchAndFilter(){
-    items = [];
-    for (let i=0; i < productList.length; i++){
-            product = productList[i]
-        if ((searchBar.value == "" || product.name.toLowerCase().includes(searchBar.value.toLowerCase()) || 
-            product.description.toLowerCase().includes(searchBar.value.toLowerCase())) && 
-            ((document.getElementById("rangeMin").value == '' || product.cost > document.getElementById("rangeMin").value) && 
-            (document.getElementById("rangeMax").value == '' || product.cost < document.getElementById("rangeMax").value)))
-        {
-            items.push(product)
-        } 
-    }
-    showProducts(items)
-    }
-
-    
-searchBar.addEventListener('input', searchAndFilter)
+document.getElementById('browseBar').addEventListener('input', searchAndFilter);
+document.getElementById("rangeMin").addEventListener('input', searchAndFilter);
+document.getElementById("rangeMax").addEventListener('input', searchAndFilter);
