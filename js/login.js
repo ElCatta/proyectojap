@@ -1,8 +1,5 @@
 
 
-function handleCredentialResponse(){
-    window.location.replace("home.html");
-}
 
 function loginSuccess(){
     let userId = document.getElementById("floatingInput").value;
