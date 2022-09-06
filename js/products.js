@@ -66,6 +66,13 @@ function catText(){
 }
 
 
+// PRODUCT ID
+
+function setProductId(id) {
+    localStorage.setItem("productId", id);
+    window.location = "product-info.html";
+}
+
 // PRODUCTS PRINTER
 
 function showProducts(list){
@@ -73,7 +80,7 @@ function showProducts(list){
     for (let i=0; i < list.length; i++){
         let product = list[i]
         htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <div onclick="setProductId(${product.id})" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.image + `" alt="product image" class="img-thumbnail">
