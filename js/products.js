@@ -43,7 +43,6 @@ function productsClean(){
 
 function searchAndFilter(){
     let filteredProducts = productList;
-    
     if(rangeMin.value != ""){
         filteredProducts = filteredProducts.filter(product => 
         product.cost > rangeMin.value)};
@@ -54,7 +53,6 @@ function searchAndFilter(){
         filteredProducts = filteredProducts.filter(product => 
         product.name.toLowerCase().includes(searchBar.value.toLowerCase()) || 
         product.description.toLowerCase().includes(searchBar.value.toLowerCase()) )}
-
     showProducts(filteredProducts)
 }
 
