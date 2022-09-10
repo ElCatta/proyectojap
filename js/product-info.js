@@ -16,54 +16,52 @@ function addImages(){
     return imagesToAppend
 }
 
-
-
 function showProductInfo(){
     contentToAppend = `
     <div class="row">
                 <div class="col-12">
                 <b><h3 class="mb-3 mt-5 mb-3"> ` + product.name + ` </h3></b>
                 </div>      
-        </div>
+    </div>
     <div  class="list-group-item list-group-item-action">
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <p>
                 <b><h5 class="mb-3"> Precio: </h5></b>
                 <h5>`+ product.currency + ` `+ product.cost + `</h5>
                 </p>
-        </div>
+            </div>
         </div>
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <p>
                 <b><h5 class="mb-3"> Descripción: </h5></b>
                 <h5>`+ product.description + `</h5>
                 </p>
-        </div>
+            </div>
         </div>
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <p>
                 <b><h5 class="mb-3"> Categoría: </h5></b>
                 <h5>`+ product.category + ` </h5>
                 </p>
-        </div>
+            </div>
         </div>
         <div class="row">
-        <div class="col-12">
+            <div class="col-12">
                 <p>
                 <b><h5 class="mb-3"> Cantidad vendidos: </h5></b>
                 <h5>`+ product.soldCount + `</h5>
                 </p>
-        </div>
+            </div>
         </div>  
         <div class="row">
-        <div class="col-3">
+            <div class="col-3">
                 <p>
                 <b><h5 class="mb-3"> Fotos del artículo: </h5></b>
                 </p>
-        </div>
+            </div>
         </div> 
         <div class="row">
             <div class="column">
@@ -77,32 +75,35 @@ function showProductInfo(){
     infoContainer.innerHTML = contentToAppend 
 }
 
+function addRating(comment){
+    let rating = ""
+        for (let s = 0; s < comment.score; s++) {
+            rating += `<span class="fa fa-star checked"></span>`}
+        for (let s = 0; s < 5 - comment.score; s++) {
+            rating += `<span class="fa fa-star"></span>`}
+        return rating
+}
 
 function addComments(){
     let commentsToAppend = ""
     for (let i = 0; i < comments.length; i++) {
-        let rating = ""
-        for (let s = 0; s < comments[i].score; s++) {
-            rating += `<span class="fa fa-star checked"></span>`}
-        for (let s = 0; s < 5 - comments[i].score; s++) {
-            rating += `<span class="fa fa-star"></span>`}
+
         commentsToAppend += `
             <div class="row p-5 border border-secondary d-flex position-relative">
                 <div class="d-flex justify-content">
     	            <h4> ` + comments[i].user + ` </h4>
-                    <div class="container ml-3 w-25"> `+ comments[i].dateTime  +`</p>
+                    <div class="container ml-2 w-25"> `+ comments[i].dateTime  +`</p>
                     </div>
                     <div class="container ml-5"> `+ comments[i].description  +`</p>
                     </div>
-                    <div class="container"> `+ rating  +`</p>
+                    <div class="container"> `+ addRating(comments[i])  +`</p>
                     </div>
                 </div>
-
             </div>`
-    }
-
+        }
     document.getElementById("product-comments-container").innerHTML += commentsToAppend
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function(e){
