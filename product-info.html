@@ -41,12 +41,42 @@
     </div>
   </nav>
   <main>
-    <div id="product-info-container" class="container">
-      
+
+    <div id="product-info-container" class="container"></div>
+
+    <div id="product-comments-container" class="container my-3"></div>
+
+    <div class="container border border-dark my-4">
+      <form action="">
+        
+        <div class="row my-3">
+          <div class="col-8 mx-4">
+            <label class="mb-3" for="newCommentBox"><h4>Haz un comentario:</h4></label>
+            <textarea class="form-control" placeholder="Escribe aquí" id="newCommentBox" style="height: 100px"></textarea>
+          </div>
+        </div>
+        
+        <div class="row my-3">
+          <div class="col-4 mx-4">
+            <label for="floatingSelect"><span>Elije la puntuación </span></label>
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="row my-3">
+          <div class="col-4 mx-4">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+          </div>
+        </div>
+      </form>
     </div>
-    <div id="product-comments-container" class="container">
-      
-    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">

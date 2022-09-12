@@ -190,17 +190,17 @@ a.custom-card:hover {
 }
 
 /* PRODUCT INFO PAGE */
-.row {
+.imageContainer {
   display: flex;
   flex-wrap: nowrap;
 }
 
-.column {
+.imagesColumn {
   flex: 25%;
   
 }
 
-.column img{
+.imagesColumn img{
   width: 312px;
 }
 

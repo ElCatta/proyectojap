@@ -1,13 +1,13 @@
-let PRODUCT_INFO = "https://japceibal.github.io/emercado-api/products/" + localStorage.getItem("productId") + ".json"
-let infoContainer = document.getElementById("product-info-container");
-let PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/"  + localStorage.getItem("productId") + ".json"
-let product, comments = ""
+const PRODUCT_INFO = "https://japceibal.github.io/emercado-api/products/" + localStorage.getItem("productId") + ".json";
+const PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/"  + localStorage.getItem("productId") + ".json";
+const infoContainer = document.getElementById("product-info-container");
+const commentsContainer = document.getElementById("product-comments-container");
+let product, comments = "";
 
 
-// API FETCH
+/* PRODUCT INFO */
 
-
-function addImages(){
+function productImages(){
     let imagesToAppend = "" 
     for (let i=0; i < product.images.length; i++){
          imagesToAppend += `
@@ -19,9 +19,9 @@ function addImages(){
 function showProductInfo(){
     contentToAppend = `
     <div class="row">
-                <div class="col-12">
+        <div class="col-12">
                 <b><h3 class="mb-3 mt-5 mb-3"> ` + product.name + ` </h3></b>
-                </div>      
+        </div>      
     </div>
     <div  class="list-group-item list-group-item-action">
         <div class="row">
@@ -63,9 +63,9 @@ function showProductInfo(){
                 </p>
             </div>
         </div> 
-        <div class="row">
-            <div class="column">
-            `+ addImages() + `
+        <div class="imageContainer my-2">
+            <div class="imagesColumn">
+            `+ productImages() + `
             </div>
         </div>
         
@@ -75,7 +75,9 @@ function showProductInfo(){
     infoContainer.innerHTML = contentToAppend 
 }
 
-function addRating(comment){
+/* PRODUCT COMMENTS */
+
+function commentRating(comment){
     let rating = ""
         for (let s = 0; s < comment.score; s++) {
             rating += `<span class="fa fa-star checked"></span>`}
@@ -84,27 +86,32 @@ function addRating(comment){
         return rating
 }
 
-function addComments(){
+function showProductComments(){
     let commentsToAppend = ""
     for (let i = 0; i < comments.length; i++) {
 
         commentsToAppend += `
-            <div class="row p-5 border border-secondary d-flex position-relative">
-                <div class="d-flex justify-content">
-    	            <h4> ` + comments[i].user + ` </h4>
-                    <div class="container ml-2 w-25"> `+ comments[i].dateTime  +`</p>
+            <div class="row p-4 border border-dark d-flex w-100">
+                <div class="d-flex">
+                    <div class="container px-2 w-25 border border-secondary">
+    	                <h4> ` + comments[i].user + ` </h4>
                     </div>
-                    <div class="container ml-5"> `+ comments[i].description  +`</p>
+                    <div class="container ml-3 w-50"> 
+                    <span>`+ comments[i].description  +`</span>
                     </div>
-                    <div class="container"> `+ addRating(comments[i])  +`</p>
+                    <div class="container w-25"> <span> `+ commentRating(comments[i])  +` </span>
+                    </div>
+                    <div class="container ml-2 w-25"> <span>`+ comments[i].dateTime  +`</span>
                     </div>
                 </div>
             </div>`
-        }
-    document.getElementById("product-comments-container").innerHTML += commentsToAppend
+    }
+    commentsContainer.innerHTML += commentsToAppend
 }
 
 
+
+// API FETCHING
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO).then(function(resultObj){
@@ -118,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             comments = resultObj.data
-            addComments()
+            showProductComments()
         }
     });
 });
