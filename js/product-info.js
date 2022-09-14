@@ -5,22 +5,22 @@ const commentsContainer = document.getElementById("product-comments-container");
 let product, comments = "";
 
 
-/* PRODUCT INFO */
+// PRODUCT INFO 
 
 function productImages(){
     let imagesToAppend = "" 
     for (let i=0; i < product.images.length; i++){
-         imagesToAppend += `
-         <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">`
+        imagesToAppend += `
+        <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">`;
     }
     return imagesToAppend
 }
 
 function showProductInfo(){
-    contentToAppend = `
+    let contentToAppend = `
     <div class="row">
         <div class="col-12">
-                <b><h3 class="mb-3 mt-5 mb-3"> ` + product.name + ` </h3></b>
+            <b><h3 class="mb-3 mt-5 mb-3"> ` + product.name + ` </h3></b>
         </div>      
     </div>
     <div  class="list-group-item list-group-item-action">
@@ -63,7 +63,7 @@ function showProductInfo(){
                 </p>
             </div>
         </div> 
-        <div class="imageContainer my-2">
+        <div class="imageContainer my-2m,">
             <div class="imagesColumn">
             `+ productImages() + `
             </div>
@@ -71,23 +71,24 @@ function showProductInfo(){
         
         <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>
     </div>
-    `
-    infoContainer.innerHTML = contentToAppend 
+    `;
+    infoContainer.innerHTML = contentToAppend;
 }
 
-/* PRODUCT COMMENTS */
+// PRODUCT COMMENTS 
 
 function commentRating(comment){
-    let rating = ""
-        for (let s = 0; s < comment.score; s++) {
-            rating += `<span class="fa fa-star checked"></span>`}
-        for (let s = 0; s < 5 - comment.score; s++) {
-            rating += `<span class="fa fa-star"></span>`}
-        return rating
+    let rating = "";
+        for (let i = 0; i < 5; i++) {
+            if (i < comment.score)
+            {rating += `<span class="fa fa-star checked"></span>`}
+            else {rating += `<span class="fa fa-star"></span>`};
+        }    
+        return rating;
 }
 
 function showProductComments(){
-    let commentsToAppend = ""
+    let commentsToAppend = "";
     for (let i = 0; i < comments.length; i++) {
 
         commentsToAppend += `
@@ -97,16 +98,18 @@ function showProductComments(){
     	                <h4> ` + comments[i].user + ` </h4>
                     </div>
                     <div class="container ml-3 w-50"> 
-                    <span>`+ comments[i].description  +`</span>
+                        <span>`+ comments[i].description  +`</span>
                     </div>
-                    <div class="container w-25"> <span> `+ commentRating(comments[i])  +` </span>
+                    <div class="container w-25"> 
+                        <span> `+ commentRating(comments[i])  +` </span>
                     </div>
-                    <div class="container ml-2 w-25"> <span>`+ comments[i].dateTime  +`</span>
+                    <div class="container ml-2 w-25"> 
+                        <span>`+ comments[i].dateTime  +`</span>
                     </div>
                 </div>
             </div>`
-    }
-    commentsContainer.innerHTML += commentsToAppend
+    };
+    commentsContainer.innerHTML = commentsToAppend;
 }
 
 
@@ -118,14 +121,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             product = resultObj.data;
-            showProductInfo()
+            showProductInfo();
         }
     });
     getJSONData(PRODUCT_COMMENTS).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            comments = resultObj.data
-            showProductComments()
+            comments = resultObj.data;
+            showProductComments();
         }
     });
 });
