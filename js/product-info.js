@@ -11,7 +11,7 @@ function productImages(){
     let imagesToAppend = "" 
     for (let i=0; i < product.images.length; i++){
         imagesToAppend += `
-        <div class="col-xl-3 col-lg-6 col-sm-12 text-center"> 
+        <div class="col-xl-3 col-md-6 col-sm-12 text-center my-md-3"> 
         <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">
         </div>`;    
     }
