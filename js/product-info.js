@@ -11,7 +11,9 @@ function productImages(){
     let imagesToAppend = "" 
     for (let i=0; i < product.images.length; i++){
         imagesToAppend += `
-        <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">`;
+        <div class="col-xl-3 col-lg-6 col-sm-12 text-center"> 
+        <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">
+        </div>`;    
     }
     return imagesToAppend
 }
@@ -57,19 +59,19 @@ function showProductInfo(){
             </div>
         </div>  
         <div class="row">
-            <div class="col-3">
+            <div class="col-12">
                 <p>
                 <b><h5 class="mb-3"> Fotos del artículo: </h5></b>
                 </p>
             </div>
         </div> 
-        <div class="imageContainer my-2m,">
-            <div class="imagesColumn">
+        <div class="row">
             `+ productImages() + `
             </div>
+            
+        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>
         </div>
         
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>
     </div>
     `;
     infoContainer.innerHTML = contentToAppend;
@@ -77,33 +79,33 @@ function showProductInfo(){
 
 // PRODUCT COMMENTS 
 
-function commentRating(comment){
+function commentRating(commentScore){
     let rating = "";
         for (let i = 0; i < 5; i++) {
-            if (i < comment.score)
+            if (i < commentScore)
             {rating += `<span class="fa fa-star checked"></span>`}
             else {rating += `<span class="fa fa-star"></span>`};
         }    
         return rating;
 }
 
+
 function showProductComments(){
     let commentsToAppend = "";
     for (let i = 0; i < comments.length; i++) {
-
         commentsToAppend += `
-            <div class="row p-4 border border-dark d-flex w-100">
-                <div class="d-flex">
-                    <div class="container px-2 w-25 border border-secondary">
+            <div class="list-group-item list-group-item-action">
+                <div class="row d-flex mt-4 mb-2">
+                    <div class="col-lg-2 col-md-6 mb-md-3 text-md-center ms-lg-4 me-lg-1">
     	                <h4> ` + comments[i].user + ` </h4>
                     </div>
-                    <div class="container ml-3 w-50"> 
+                    <div class="col-lg-4 col-md-6 mb-md-3 text-md-center ms-lg-2 mt-lg-1"> 
                         <span>`+ comments[i].description  +`</span>
                     </div>
-                    <div class="container w-25"> 
-                        <span> `+ commentRating(comments[i])  +` </span>
+                    <div class="col-lg-3 col-md-6 text-md-center me-lg-5"> 
+                        <span> `+ commentRating(comments[i].score)  +` </span>
                     </div>
-                    <div class="container ml-2 w-25"> 
+                    <div class="col-lg-1 col-md-6 text-md-center ms-lg-5 text-lg-right"> 
                         <span>`+ comments[i].dateTime  +`</span>
                     </div>
                 </div>
@@ -112,6 +114,25 @@ function showProductComments(){
     commentsContainer.innerHTML = commentsToAppend;
 }
 
+function newComment(){
+    commentsContainer.innerHTML += 
+    `        <div class="list-group-item list-group-item-action">
+                <div class="row d-flex mt-4 mb-2">
+                    <div class="col-lg-2 col-md-6 mb-md-4 text-md-center ms-lg-4 me-lg-1">
+    	                <h4> ` + document.getElementById("newCommentUsername").value + ` </h4>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-md-4 text-md-center ms-lg-2 mt-lg-1"> 
+                        <span>`+ document.getElementById("newCommentText").value  +`</span>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-md-center me-lg-5"> 
+                        <span> `+ commentRating(parseInt(document.getElementById("newCommentScore").value))  +` </span>
+                    </div>
+                    <div class="col-lg-1 col-md-6 text-md-center ms-lg-5 text-lg-right"> 
+                        <span>`+ "Hace un momento"  +`</span>
+                    </div>
+                </div>
+            </div>`
+}
 
 
 // API FETCHING

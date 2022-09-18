@@ -34,38 +34,48 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html" onclick="logOut()" id="userField" title="Cerrar sesión">Iniciar sesión</a>
           </li>
-          <li class="nav-item">
-          </li>
+
         </ul>
       </div>
     </div>
   </nav>
   <main>
+    
+    <div id="product-info-container" class="container-xl">
 
-    <div id="product-info-container" class="container"></div>
+    </div>
 
-    <div id="product-comments-container" class="container my-3"></div>
+    <div id="product-comments-container" class="container-xl my-3"></div>
 
-    <div class="container border border-dark my-4">
-      <form action="">
+    <div class="container-xl">
+      <div class="list-group-item list-group-item-action">
+      <form onsubmit="newComment() ;return false">
         
         <div class="row my-3">
           <div class="col-8 mx-4">
             <label class="mb-3" for="newCommentBox"><h4>Haz un comentario:</h4></label>
-            <textarea class="form-control" placeholder="Escribe aquí" id="newCommentBox" style="height: 100px"></textarea>
+            <textarea id="newCommentText" class="form-control" placeholder="Escribe aquí" id="newCommentBox" style="height: 100px" required></textarea>
           </div>
+          
         </div>
         
         <div class="row my-3">
           <div class="col-4 mx-4">
             <label for="floatingSelect"><span>Elije la puntuación </span></label>
-            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <select class="form-select" id="newCommentScore">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
+          </div>
+        </div>
+
+        <div class="row my-3">
+          <div class="col-4 col-lg-2 mx-4">
+            <label for="newCommentUsername"><span>Nombre de usuario: </span></label>
+            <input class="form-control" id="newCommentUsername" type="text" required>
           </div>
         </div>
         
@@ -76,7 +86,7 @@
         </div>
       </form>
     </div>
-
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">

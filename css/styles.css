@@ -190,19 +190,6 @@ a.custom-card:hover {
 }
 
 /* PRODUCT INFO PAGE */
-.imageContainer {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.imagesColumn {
-  flex: 25%;
-  
-}
-
-.imagesColumn img{
-  width: 312px;
-}
 
 .righttop{
   position:absolute;
