@@ -56,6 +56,7 @@ function showProductInfo(){
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
+
 // PRODUCT IMAGES
 
 function showImagesCarousel(){
