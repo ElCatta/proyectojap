@@ -4,21 +4,11 @@ const RELATED_PRODUCTS = PRODUCTS_URL + localStorage.getItem("catID") + ".json";
 const infoContainer = document.getElementById("product-info-container");
 const commentsContainer = document.getElementById("product-comments-container");
 const relatedProductsContainer = document.getElementById("related-products-container");
+const imagesCarousel = document.getElementById("imagesCarousel");
 let product, comments = "";
 
 
 // PRODUCT INFO 
-
-function productImages(){
-    let imagesToAppend = "" 
-    for (let i=0; i < product.images.length; i++){
-        imagesToAppend += `
-        <div class="col-xl-3 col-md-6 col-sm-12 text-center my-md-3"> 
-            <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">
-        </div>`;    
-    }
-    return imagesToAppend
-}
 
 function showProductInfo(){
     let contentToAppend = `
@@ -60,20 +50,24 @@ function showProductInfo(){
                 </p>
             </div>
         </div>  
-        <div class="row">
-            <div class="col-12">
-                <p>
-                <b><h5 class="mb-3"> Fotos del artículo: </h5></b>
-                </p>
-            </div>
-        </div> 
-        <div class="row">
-            `+ productImages() + `
-        </div>
-            
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>  
+
+        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary w-25">Volver atrás</button>  
     </div>`
     infoContainer.innerHTML = contentToAppend;
+}
+// PRODUCT IMAGES
+
+function showImagesCarousel(){
+    imagesCarousel.innerHTML += `
+        <div class="carousel-item active"> 
+            <img class="d-block w-100" src="` +  product.images[0] + `" alt="product image">
+        </div>`; 
+    for (let i=1; i < product.images.length; i++){
+        imagesCarousel.innerHTML += `
+        <div class="carousel-item"> 
+            <img class="d-block w-100" src="` +  product.images[i] + `" alt="product image">
+        </div>`;    
+    }
 }
 
 // PRODUCT COMMENTS 
@@ -81,13 +75,14 @@ function showProductInfo(){
 function commentRating(commentScore){
     let rating = "";
         for (let i = 0; i < 5; i++) {
-            if (i < commentScore)
-            {rating += `<span class="fa fa-star checked"></span>`}
-            else {rating += `<span class="fa fa-star"></span>`};
+            if (i < commentScore){
+                rating += `<span class="fa fa-star checked"></span>`
+            } else {
+                rating += `<span class="fa fa-star"></span>`
+            };
         }    
     return rating;
 }
-
 
 function showProductComments(){
     for (let i = 0; i < comments.length; i++) {
@@ -155,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             product = resultObj.data;
             showProductInfo();
+            showImagesCarousel();
         }
     });
     
