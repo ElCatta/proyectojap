@@ -31,10 +31,14 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html" onclick="logOut()" id="userField" title="Cerrar sesión">Iniciar sesión</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>  
+              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a></li>
+            </ul>
           </li>
-
         </ul>
       </div>
     </div>
@@ -46,6 +50,9 @@
     </div>
 
     <div id="product-comments-container" class="container-lg my-3"></div>
+
+    
+    
 
     <div class="container-lg">
       <div class="list-group-item list-group-item-action">
@@ -86,6 +93,13 @@
         </div>
       </form>
     </div>
+    </div>
+
+    <div id="related-products-holder" class="container-lg my-5 ">  
+      <div class="list-group-item list-group-item-action">
+      <h4 class="my-4">Productos relacionados:</h4>
+        <div id="related-products-container" class="row"></div>
+      </div>
     </div>
   </main>
   <footer class="text-muted">

@@ -6,7 +6,6 @@ let rangeMax = document.getElementById("rangeMax");
 let searchBar = document.getElementById('browseBar');
 
 
-
 // SORTING FUNCTIONALITIES
 
 function sortByPriceDesc(a,b){
@@ -39,7 +38,7 @@ function productsClean(){
     document.getElementById("rangeMax").value = "";
 }
 
-// FILTRO Y DESAFIATE(BUSQUEDA)
+// SEARCH AND FILTER
 
 function searchAndFilter(){
     let filteredProducts = productList;
@@ -61,14 +60,6 @@ function searchAndFilter(){
 
 function catText(){
     document.getElementById("catName").innerText = catNames[localStorage.getItem("catID")]
-}
-
-
-// PRODUCT ID
-
-function setProductId(id) {
-    localStorage.setItem("productId", id);
-    window.location = "product-info.html";
 }
 
 // PRODUCTS PRINTER
@@ -104,14 +95,13 @@ function showProducts(list){
 }
 
 
-// PRODUCTS API FETCHING
+// PRODUCTS FETCH
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_API).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productList = resultObj.data.products;
-            console.log(productList)
             showProducts(productList);
         }
     });

@@ -44,7 +44,10 @@ let getJSONData = function(url){
 
 function showUserId(){
   if (localStorage.getItem("userId") != ""){
-  document.getElementById("userField").innerText = localStorage.getItem("userId");}
+    document.getElementById("userFieldDropdown").innerText = localStorage.getItem("userId");
+  } else {
+    document.getElementById("userFieldDropdown").innerText = "Usuario";
+  }
 }
 
 if(window.addEventListener) {
@@ -54,6 +57,10 @@ function logOut(){
   localStorage.setItem("userId", "");
   window.location.replace("home.html");}
 
-  
 
-  
+// PRODUCT ID
+
+function setProductId(id) {
+  localStorage.setItem("productId", id);
+  window.location = "product-info.html";
+}

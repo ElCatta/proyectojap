@@ -1,7 +1,9 @@
 const PRODUCT_INFO = "https://japceibal.github.io/emercado-api/products/" + localStorage.getItem("productId") + ".json";
 const PRODUCT_COMMENTS = "https://japceibal.github.io/emercado-api/products_comments/"  + localStorage.getItem("productId") + ".json";
+const RELATED_PRODUCTS = PRODUCTS_URL + localStorage.getItem("catID") + ".json";
 const infoContainer = document.getElementById("product-info-container");
 const commentsContainer = document.getElementById("product-comments-container");
+const relatedProductsContainer = document.getElementById("related-products-container");
 let product, comments = "";
 
 
@@ -12,7 +14,7 @@ function productImages(){
     for (let i=0; i < product.images.length; i++){
         imagesToAppend += `
         <div class="col-xl-3 col-md-6 col-sm-12 text-center my-md-3"> 
-        <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">
+            <img src="` +  product.images[i] + `" alt="product image" class="img-fluid">
         </div>`;    
     }
     return imagesToAppend
@@ -67,13 +69,10 @@ function showProductInfo(){
         </div> 
         <div class="row">
             `+ productImages() + `
-            </div>
-            
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>
         </div>
-        
-    </div>
-    `;
+            
+        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary">Volver atrás</button>  
+    </div>`
     infoContainer.innerHTML = contentToAppend;
 }
 
@@ -86,15 +85,14 @@ function commentRating(commentScore){
             {rating += `<span class="fa fa-star checked"></span>`}
             else {rating += `<span class="fa fa-star"></span>`};
         }    
-        return rating;
+    return rating;
 }
 
 
 function showProductComments(){
-    let commentsToAppend = "";
     for (let i = 0; i < comments.length; i++) {
-        commentsToAppend += `
-            <div class="list-group-item list-group-item-action">
+        commentsContainer.innerHTML += 
+            `<div class="list-group-item list-group-item-action">
                 <div class="row d-flex mt-4 mb-2">
                     <div class="col-lg-2 col-md-6 mb-md-3 text-md-center ms-lg-4 me-lg-1">
     	                <h4> ` + comments[i].user + ` </h4>
@@ -111,31 +109,45 @@ function showProductComments(){
                 </div>
             </div>`
     };
-    commentsContainer.innerHTML = commentsToAppend;
 }
 
 function newComment(){
     commentsContainer.innerHTML += 
-    `        <div class="list-group-item list-group-item-action">
-                <div class="row d-flex mt-4 mb-2">
-                    <div class="col-lg-2 col-md-6 mb-md-4 text-md-center ms-lg-4 me-lg-1">
-    	                <h4> ` + document.getElementById("newCommentUsername").value + ` </h4>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-md-4 text-md-center ms-lg-2 mt-lg-1"> 
-                        <span>`+ document.getElementById("newCommentText").value  +`</span>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-md-center me-lg-5"> 
-                        <span> `+ commentRating(parseInt(document.getElementById("newCommentScore").value))  +` </span>
-                    </div>
-                    <div class="col-lg-1 col-md-6 text-md-center ms-lg-5 text-lg-right"> 
-                        <span>`+ "Hace un momento"  +`</span>
-                    </div>
+        `<div class="list-group-item list-group-item-action">
+            <div class="row d-flex mt-4 mb-2">
+                <div class="col-lg-2 col-md-6 mb-md-4 text-md-center ms-lg-4 me-lg-1">
+    	            <h4> ` + document.getElementById("newCommentUsername").value + ` </h4>
                 </div>
-            </div>`
+                <div class="col-lg-4 col-md-6 mb-md-4 text-md-center ms-lg-2 mt-lg-1"> 
+                    <span>`+ document.getElementById("newCommentText").value  +`</span>
+                </div>
+                <div class="col-lg-3 col-md-6 text-md-center me-lg-5"> 
+                    <span> `+ commentRating(parseInt(document.getElementById("newCommentScore").value))  +` </span>
+                </div>
+                <div class="col-lg-1 col-md-6 text-md-center ms-lg-5 text-lg-right"> 
+                    <span>`+ "Hace un momento"  +`</span>
+                </div>
+            </div>
+        </div>`
 }
 
+// RELATED PRODUCTS
 
-// API FETCHING
+function showRelatedProducts(){
+    for (let i=0; i < 4; i++){
+        if (relatedProducts[i].id != localStorage.getItem("productId")){
+            relatedProductsContainer.innerHTML += `
+                <div class="card col-md-4 col-sm-12" onclick="setProductId(${relatedProducts[i].id})">
+                <img class="card-img-top" src="`+ relatedProducts[i].image +`" alt="`+ relatedProducts[i].name +`">
+                    <div class="card-body">
+                    <h4 class="card-title text-center">`+ relatedProducts[i].name +`</h4>  
+                    </div>
+                </div>`;    
+        }
+    }
+}
+
+// API FETCH
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO).then(function(resultObj){
@@ -145,11 +157,24 @@ document.addEventListener("DOMContentLoaded", function(e){
             showProductInfo();
         }
     });
+    
     getJSONData(PRODUCT_COMMENTS).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             comments = resultObj.data;
             showProductComments();
+        }
+    });
+
+    getJSONData(RELATED_PRODUCTS).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            relatedProducts = resultObj.data.products;
+            if(relatedProducts.length > 2){
+                showRelatedProducts()
+            } else {
+                document.getElementById("related-products-holder").innerHTML = "";
+            }
         }
     });
 });
