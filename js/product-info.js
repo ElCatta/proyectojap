@@ -51,7 +51,8 @@ function showProductInfo(){
             </div>
         </div>  
 
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary w-25">Volver atrás</button>  
+        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>  
+        <button type="button" onClick="addToCart(`+ product.id +`)" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
@@ -140,6 +141,17 @@ function showRelatedProducts(){
                 </div>`;    
         }
     }
+}
+
+// CART FUNCTIONALITIES
+
+function addToCart(id){
+    if(localStorage.getItem("cart") == null){
+        localStorage.setItem("cart", "[]")
+    } 
+    let currentCart = JSON.parse(localStorage.getItem("cart"));
+    currentCart.push(id);
+    localStorage.setItem("cart", JSON.stringify(currentCart));
 }
 
 // API FETCH

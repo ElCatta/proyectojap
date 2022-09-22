@@ -195,5 +195,10 @@ a.custom-card:hover {
   position:absolute;
   top:0;
   right:0;
-  width:250px;margin-right:10px;margin-top:10px;
+}
+
+.rightbot{
+  position:absolute;
+  bottom: 0;
+  right: 0;
 }
