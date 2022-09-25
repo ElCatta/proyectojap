@@ -134,7 +134,7 @@ function showRelatedProducts(){
     for (let i=0; i < 4; i++){
         if (relatedProducts[i].id != localStorage.getItem("productId")){
             relatedProductsContainer.innerHTML += `
-                <div class="card col-md-4 col-sm-12" onclick="setProductId(${relatedProducts[i].id})">
+                <div class="card col-md-4 col-sm-12" onclick="loadProductInfo(${relatedProducts[i].id})">
                 <img class="card-img-top" src="`+ relatedProducts[i].image +`" alt="`+ relatedProducts[i].name +`">
                     <div class="card-body">
                     <h4 class="card-title text-center">`+ relatedProducts[i].name +`</h4>  
@@ -144,16 +144,7 @@ function showRelatedProducts(){
     }
 }
 
-// CART FUNCTIONALITIES
 
-function addToCart(id){
-    if(localStorage.getItem("cart") == null){
-        localStorage.setItem("cart", "[]")
-    } 
-    let currentCart = JSON.parse(localStorage.getItem("cart"));
-    currentCart.push(id);
-    localStorage.setItem("cart", JSON.stringify(currentCart));
-}
 
 // API FETCH
 

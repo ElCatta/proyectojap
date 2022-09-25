@@ -40,7 +40,7 @@ let getJSONData = function(url){
     });
 }
 
-// USER ID 
+// USER PROFILE
 
 function showUserId(){
   if (localStorage.getItem("userId") != ""){
@@ -60,7 +60,20 @@ function logOut(){
 
 // PRODUCT ID
 
-function setProductId(id) {
+function loadProductInfo(id) {
   localStorage.setItem("productId", id);
   window.location = "product-info.html";
+}
+
+// CART FUNCTIONALITIES
+
+function addToCart(id){
+  if(localStorage.getItem("cart") == null){
+      localStorage.setItem("cart", "[]")
+  } 
+  let currentCart = JSON.parse(localStorage.getItem("cart"));
+  currentCart.push(id);
+  localStorage.setItem("cart", JSON.stringify(currentCart));
+  window.location = "cart.html"
+  
 }

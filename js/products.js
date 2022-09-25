@@ -34,7 +34,7 @@ function productSortRel(){
 
 function productsClean(){
     showProducts(productList);
-    document.getElementById("rangeMin").value, 
+    document.getElementById("rangeMin").value = ""
     document.getElementById("rangeMax").value = "";
 }
 
@@ -69,8 +69,8 @@ function showProducts(list){
     for (let i=0; i < list.length; i++){
         let product = list[i]
         htmlContentToAppend += `
-            <div onclick="setProductId(${product.id})" class="list-group-item list-group-item-action">
-                <div class="row">
+            <div class="list-group-item list-group-item-action" style="cursor: pointer;">
+                <div class="row" onclick="loadProductInfo(${product.id})">
                     <div class="col-3">
                         <img src="` + product.image + `" alt="product image" class="img-thumbnail">
                     </div>
@@ -84,9 +84,9 @@ function showProducts(list){
                             </div>
                             <small class="text-muted">` + product.soldCount + ` vendidos</small> 
                         </div>
-    
                     </div>
                 </div>
+                <button type="button" onClick="addToCart(`+ product.id +`)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
             </div>
             `
     }
