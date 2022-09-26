@@ -42,9 +42,26 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container-lg">
+      <h3 class="my-4 text-center" >Mi carrito</h3>
+      <div id="cartContainer" class="list-group">
+      </div>
+      <div class="list-group">
+        <div class="list-group-item list-group-item-action mt-3">
+          <div class="row">
+            <div class="col-7"></div>
+            <div class="col-3 my-4 text-end">
+              <h5>Costo total: <span id="totalCost"></span></h5>
+            </div>
+            <div class="col-2 my-4">
+              <input type="radio" id="uyuOption" name="currencies" value="UYU" onclick="selectUyu()">
+              <label for="vehicle1">UYU</label><br>
+              <input type="radio" id="usdOption" name="currencies" value="USD" onclick="selectUsd()">
+              <label for="vehicle2">USD</label><br>
+            </div>
+            
+          </div>
+        </div>
       </div>
     </div>
   </main>

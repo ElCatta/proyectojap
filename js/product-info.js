@@ -51,10 +51,12 @@ function showProductInfo(){
             </div>
         </div>  
 
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary w-25">Volver atrás</button>  
+        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>  
+        <button type="button" onClick="addToCart(`+ product.id +`)" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
+
 // PRODUCT IMAGES
 
 function showImagesCarousel(){
@@ -132,7 +134,7 @@ function showRelatedProducts(){
     for (let i=0; i < 4; i++){
         if (relatedProducts[i].id != localStorage.getItem("productId")){
             relatedProductsContainer.innerHTML += `
-                <div class="card col-md-4 col-sm-12" onclick="setProductId(${relatedProducts[i].id})">
+                <div class="card col-md-4 col-sm-12" onclick="loadProductInfo(${relatedProducts[i].id})">
                 <img class="card-img-top" src="`+ relatedProducts[i].image +`" alt="`+ relatedProducts[i].name +`">
                     <div class="card-body">
                     <h4 class="card-title text-center">`+ relatedProducts[i].name +`</h4>  
@@ -141,6 +143,8 @@ function showRelatedProducts(){
         }
     }
 }
+
+
 
 // API FETCH
 
