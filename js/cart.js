@@ -4,9 +4,7 @@ let cartProducts = JSON.parse(localStorage.getItem("cart"))
 let cartContainer = document.getElementById("cartContainer")
 
 
-
-
-// REMOVE ITEM FROM CART
+// REMOVE  AND ADD MORE ITEMS
 
 function removeProduct(index){
     cartArray.splice(index, 1);
@@ -15,7 +13,6 @@ function removeProduct(index){
     showCart();
     showTotalCostUsd()
 }
-
 
 // HERE I SHOW EVERY PRODUCT INFO SAVED IN cartArray
 
@@ -45,20 +42,58 @@ function showCart(){
                 </div>
             </div>`;
     }
+    showTotalCost()
 }
 
-function showTotalCostUsd(){
-    totalCost = 0
-    for (let i = 0; i < cartArray.length; i++) {
-        if (cartArray[i].currency == "UYU"){
-            totalCost += cartArray[i].cost / 41
-        } else {
-            totalCost += cartArray[i].cost
-        }
-        
+
+// TOTAL COST AND CURRENCY CONVERSION
+
+function checkSelectedCurrency(){
+    if (localStorage.getItem("currency") == "USD"){
+        document.getElementById("usdOption").checked = true;
+    } else {
+        document.getElementById("uyuOption").checked = true;
     }
-    document.getElementById("totalCost").innerText = totalCost.toFixed(2) + " " + "USD"
 }
+
+function selectUsd(){
+    localStorage.setItem("currency", "USD")
+    showTotalCost()
+}
+
+
+function selectUyu(){
+    localStorage.setItem("currency", "UYU")
+    showTotalCost()
+}
+
+
+function uyuToUsd(){
+    for (let i = 0; i < cartArray.length; i++) {
+        if (cartArray[i].currency == "UYU"){totalCost += cartArray[i].cost / 41} 
+        else {totalCost += cartArray[i].cost}
+    }   
+}
+
+function usdToUyu(){
+    for (let i = 0; i < cartArray.length; i++) {
+        if (cartArray[i].currency == "USD"){totalCost += cartArray[i].cost * 41} 
+        else {totalCost += cartArray[i].cost}
+    }
+}
+
+function showTotalCost(){
+    totalCost = 0
+    if(localStorage.getItem("currency") == "USD"){
+        uyuToUsd()
+    } else {
+        usdToUyu()
+    } 
+    document.getElementById("totalCost").innerText = "$" + Math.round(totalCost) + " " + localStorage.getItem("currency") 
+}
+
+
+
 
 // HERE I FETCH EVERY PRODUCT IN LOCALSTORAGE
 
@@ -68,9 +103,9 @@ async function cartProductsFetch(){
         let product = result.data
         cartArray.push(product)
     }
-    currency = cartArray[0].currency
     showCart() 
-    showTotalCostUsd()
+    showTotalCost()
+    checkSelectedCurrency()
 }
 
 
