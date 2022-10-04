@@ -43,25 +43,56 @@
   </nav>
   <main>
     <div class="container-lg">
-      <h3 class="my-4 text-center" >Mi carrito</h3>
-      <div id="cartContainer" class="list-group">
-      </div>
+      <h2 class="my-4 text-center mb-5" >Mi carrito</h2>
       <div class="list-group">
-        <div class="list-group-item list-group-item-action mt-3">
-          <div class="row">
-            <div class="col-7"></div>
-            <div class="col-3 my-4 text-end">
-              <h5>Costo total: <span id="totalCost"></span></h5>
-            </div>
-            <div class="col-2 my-4">
-              <input type="radio" id="uyuOption" name="currencies" value="UYU" onclick="selectUyu()">
-              <label for="vehicle1">UYU</label><br>
-              <input type="radio" id="usdOption" name="currencies" value="USD" onclick="selectUsd()">
-              <label for="vehicle2">USD</label><br>
-            </div>
-            
-          </div>
+        <div class="list-group-item list-group-item-light mb-2">
+      <h5 class="my-4 text-start" >Artículos a comprar:</h5>
+      <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="cartContainer">
+          
+        </tbody>
+      </table>
         </div>
+        <div class="list-group-item list-group-item-light">
+          <form>
+            <h5>Tipo de envío</h4>
+            <input type="radio" id="premium" name="delivery" value="premium">
+            <label for="premium">Premium 2 a 5 dias (15%)</label>
+            <br>
+            <input type="radio" id="express" name="delivery" value="express">
+            <label for="express">Express 5 a 8 dias (7%)</label>
+            <br>
+            <input type="radio" id="standard" name="delivery" value="standard">
+            <label for="standard">Standard 12 a 15 dias (5%)</label>
+            <h5 class="mt-2 mb-2">Dirección</h4>
+              <form class="row g-3">
+                <div class="col-4">
+                  <label for="calle">Calle</label>
+                  <input type="text" id="calle" name="calle" class="form-control" required>
+                </div>
+                <div class="col-2">
+                  <label for="numero">Número</label>
+                  <input id="numero" name="numero"  class="form-control" enterkeyhint="next" required>
+                </div>
+                <div class="col-4">
+                  <label for="esquina">Esquina</label>
+                  <input type="text"  class="form-control" id="esquina" name="esquina" required>
+                </div>
+                <input type="submit" class="my-2">
+              </form>
+            </form>
+          
+        </div>
+
       </div>
     </div>
   </main>
