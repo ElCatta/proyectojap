@@ -13,8 +13,10 @@ function showCartProducts(){
             <th scope="row"><img src="${product.image}" style="width:60px;"></th>
             <td>${product.name}</td>
             <td>${product.currency + " " + product.unitCost}</td>
-            <td>${product.count}</td>
-            <td>${product.currency + " " + product.unitCost * product.count}</td>
+            <td>
+            <input type="text" class="form-control" style="width:40px;" id="product${i}Quantity" value="${product.count}" required>
+            </td>
+            <td>TO BE DEVELOPED</td>
         </tr>
         `
         
