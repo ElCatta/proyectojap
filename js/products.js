@@ -1,6 +1,6 @@
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
-let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"};
+let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
 let rangeMin = document.getElementById("rangeMin");
 let rangeMax = document.getElementById("rangeMax");
 let searchBar = document.getElementById('browseBar');
@@ -8,31 +8,31 @@ let searchBar = document.getElementById('browseBar');
 
 // SORTING FUNCTIONALITIES
 
-function sortByPriceDesc(a,b){
-    return a.cost - b.cost  
+function sortByPriceDesc(a, b) {
+    return a.cost - b.cost
 }
 
-function sortByPriceAsc(a,b){
+function sortByPriceAsc(a, b) {
     return b.cost - a.cost
 }
 
-function sortByRel(a,b){
+function sortByRel(a, b) {
     return b.soldCount - a.soldCount
 }
 
-function productSortMore(){
+function productSortMore() {
     showProducts(productList.sort(sortByPriceDesc));
 }
 
-function productSortLess(){
+function productSortLess() {
     showProducts(productList.sort(sortByPriceAsc));
 }
 
-function productSortRel(){
+function productSortRel() {
     showProducts(productList.sort(sortByRel));
 }
 
-function productsClean(){
+function productsClean() {
     showProducts(productList);
     document.getElementById("rangeMin").value = ""
     document.getElementById("rangeMax").value = "";
@@ -40,33 +40,36 @@ function productsClean(){
 
 // SEARCH AND FILTER
 
-function searchAndFilter(){
+function searchAndFilter() {
     let filteredProducts = productList;
-    if(rangeMin.value != ""){
-        filteredProducts = filteredProducts.filter(product => 
-        product.cost > rangeMin.value)};
-    if(rangeMax.value != ""){
-        filteredProducts = filteredProducts.filter(product => 
-        product.cost < rangeMax.value)};
-    if(searchBar.value != ""){
-        filteredProducts = filteredProducts.filter(product => 
-        product.name.toLowerCase().includes(searchBar.value.toLowerCase()) || 
-        product.description.toLowerCase().includes(searchBar.value.toLowerCase()) )}
+    if (rangeMin.value != "") {
+        filteredProducts = filteredProducts.filter(product =>
+            product.cost > rangeMin.value)
+    };
+    if (rangeMax.value != "") {
+        filteredProducts = filteredProducts.filter(product =>
+            product.cost < rangeMax.value)
+    };
+    if (searchBar.value != "") {
+        filteredProducts = filteredProducts.filter(product =>
+            product.name.toLowerCase().includes(searchBar.value.toLowerCase()) ||
+            product.description.toLowerCase().includes(searchBar.value.toLowerCase()))
+    }
     showProducts(filteredProducts)
 }
 
 
 // SHOW CURRENT CATEGORY TEXT
 
-function catText(){
+function catText() {
     document.getElementById("catName").innerText = catNames[localStorage.getItem("catID")]
 }
 
 // PRODUCTS PRINTER
 
-function showProducts(list){
+function showProducts(list) {
     let htmlContentToAppend = "";
-    for (let i=0; i < list.length; i++){
+    for (let i = 0; i < list.length; i++) {
         let product = list[i]
         htmlContentToAppend += `
             <div class="list-group-item list-group-item-action" style="cursor: pointer;">
@@ -77,16 +80,16 @@ function showProducts(list){
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <div class="mb-1">
-                            <h4>`+ product.name +`</h4> 
-                            <p> `+ product.description +`</p> 
+                            <h4>`+ product.name + `</h4> 
+                            <p> `+ product.description + `</p> 
                             <br> <br>
-                            <h3 class="mb-1"> $` + product.cost + ` ` + product.currency +`</h3> 
+                            <h3 class="mb-1"> $` + product.cost + ` ` + product.currency + `</h3> 
                             </div>
                             <small class="text-muted">` + product.soldCount + ` vendidos</small> 
                         </div>
                     </div>
                 </div>
-                <button type="button" onClick="addToCart(`+ product.id +`)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                <button type="button" onClick="addToCart(`+ product.id + `)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
             </div>
             `
     }
@@ -97,10 +100,9 @@ function showProducts(list){
 
 // PRODUCTS FETCH
 
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCTS_API).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
+document.addEventListener("DOMContentLoaded", function (e) {
+    getJSONData(PRODUCTS_API).then(function (resultObj) {
+        if (resultObj.status === "ok") {
             productList = resultObj.data.products;
             showProducts(productList);
         }

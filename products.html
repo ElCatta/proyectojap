@@ -9,7 +9,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  
+
 </head>
 
 <body>
@@ -31,11 +31,13 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>  
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -53,7 +55,8 @@
           <div class="input-group input-group-sm mb-5">
             <div class="input-group-prepend">
             </div>
-            <input type="search" id="browseBar" class="form-control" aria-label="Small" placeholder="Haz una búsqueda" aria-describedby="inputGroup-sizing-sm" placeholder="Realiza una búsqueda">
+            <input type="search" id="browseBar" class="form-control" aria-label="Small" placeholder="Haz una búsqueda"
+              aria-describedby="inputGroup-sizing-sm" placeholder="Realiza una búsqueda">
           </div>
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
@@ -65,7 +68,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container my-2">
@@ -81,15 +84,15 @@
             <div class="col-2 me-4">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                <button class="btn btn-outline-dark" id="clearFilters" onclick="productsClean()">Limpiar</button> 
+                <button class="btn btn-outline-dark" id="clearFilters" onclick="productsClean()">Limpiar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <div id="container-product-list">
-    </div>
-    
+      <div id="container-product-list">
+      </div>
+
     </div>
   </main>
   <footer class="text-muted">
@@ -110,7 +113,7 @@
       <div></div>
     </div>
   </div>
-  
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>

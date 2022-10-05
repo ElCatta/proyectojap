@@ -7,60 +7,62 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
-if (localStorage.getItem("currency") == undefined){
+if (localStorage.getItem("currency") == undefined) {
   localStorage.setItem("currency", "UYU")
 }
 
 
-let showSpinner = function(){
+let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-let hideSpinner = function(){
+let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-let getJSONData = function(url){
-    let result = {};
-    showSpinner();
-    return fetch(url)
+let getJSONData = function (url) {
+  let result = {};
+  showSpinner();
+  return fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
-    .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+    .then(function (response) {
+      result.status = 'ok';
+      result.data = response;
+      hideSpinner();
+      return result;
     })
-    .catch(function(error) {
-        result.status = 'error';
-        result.data = error;
-        hideSpinner();
-        return result;
+    .catch(function (error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
     });
 }
 
 // USER PROFILE
 
-function showUserId(){
-  if (localStorage.getItem("userId") != ""){
+function showUserId() {
+  if (localStorage.getItem("userId") != "") {
     document.getElementById("userFieldDropdown").innerText = localStorage.getItem("userId");
   } else {
     document.getElementById("userFieldDropdown").innerText = "Usuario";
   }
 }
 
-if(window.addEventListener) {
-  window.addEventListener('load',showUserId);}
+if (window.addEventListener) {
+  window.addEventListener('load', showUserId);
+}
 
-function logOut(){
+function logOut() {
   localStorage.setItem("userId", "");
-  window.location.replace("home.html");}
+  window.location.replace("home.html");
+}
 
 
 // PRODUCT ID

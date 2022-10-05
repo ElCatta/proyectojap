@@ -32,12 +32,14 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
               <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>  
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a></li>
-              
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
+              </li>
+
             </ul>
           </li>
         </ul>
@@ -45,83 +47,91 @@
     </div>
   </nav>
   <main>
-    
+
     <div id="product-info-container" class="container-lg">
-    </div>
-
-    <div class="container-lg">  
-      <div class="list-group-item list-group-item-action">
-        <h4>Fotos del artículo:</h4>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div id="imagesCarousel" class="carousel-inner">
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-    </div>
-
-    <div id="product-comments-container" class="container-lg my-3">
-      <div class="list-group-item list-group-item-action">
-        <h4 class="my-3 ms-4">Comentarios del producto:</h4>
-      </div>
     </div>
 
     <div class="container-lg">
       <div class="list-group-item list-group-item-action">
-      <form onsubmit="newComment() ;return false">
-        <div class="row my-3">
-          <div class="col-8 mx-4">
-            <label class="mb-3" for="newCommentBox"><h4>Haz un comentario:</h4></label>
-            <textarea id="newCommentText" class="form-control" placeholder="Escribe aquí" id="newCommentBox" style="height: 100px" required></textarea>
+        <h4>Fotos del artículo:</h4>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
-        </div>
-        
-        <div class="row my-3">
-          <div class="col-4 mx-4">
-            <label for="floatingSelect"><span>Elije la puntuación </span></label>
-            <select class="form-select" id="newCommentScore">
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+          <div id="imagesCarousel" class="carousel-inner">
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-
-        <div class="row my-3">
-          <div class="col-4 col-lg-2 mx-4">
-            <label for="newCommentUsername"><span>Nombre de usuario: </span></label>
-            <input class="form-control" id="newCommentUsername" type="text" required>
-          </div>
-        </div>
-        
-        <div class="row my-3">
-          <div class="col-4 mx-4">
-            <input type="submit" value="Enviar" class="btn btn-primary">
-          </div>
-        </div>
-      </form>
-    </div>
-    </div>
-
-    <div id="related-products-holder" class="container-lg my-5 ">  
-      <div class="list-group-item list-group-item-action">
-      <h4 class="my-4">Productos relacionados:</h4>
-        <div id="related-products-container" class="row"></div>
       </div>
-    </div>
+
+      <div id="product-comments-container" class="container-lg my-3">
+        <div class="list-group-item list-group-item-action">
+          <h4 class="my-3 ms-4">Comentarios del producto:</h4>
+        </div>
+      </div>
+
+      <div class="container-lg">
+        <div class="list-group-item list-group-item-action">
+          <form onsubmit="newComment() ;return false">
+            <div class="row my-3">
+              <div class="col-8 mx-4">
+                <label class="mb-3" for="newCommentBox">
+                  <h4>Haz un comentario:</h4>
+                </label>
+                <textarea id="newCommentText" class="form-control" placeholder="Escribe aquí" id="newCommentBox"
+                  style="height: 100px" required></textarea>
+              </div>
+            </div>
+
+            <div class="row my-3">
+              <div class="col-4 mx-4">
+                <label for="floatingSelect"><span>Elije la puntuación </span></label>
+                <select class="form-select" id="newCommentScore">
+                  <option selected value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row my-3">
+              <div class="col-4 col-lg-2 mx-4">
+                <label for="newCommentUsername"><span>Nombre de usuario: </span></label>
+                <input class="form-control" id="newCommentUsername" type="text" required>
+              </div>
+            </div>
+
+            <div class="row my-3">
+              <div class="col-4 mx-4">
+                <input type="submit" value="Enviar" class="btn btn-primary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div id="related-products-holder" class="container-lg my-5 ">
+        <div class="list-group-item list-group-item-action">
+          <h4 class="my-4">Productos relacionados:</h4>
+          <div id="related-products-container" class="row"></div>
+        </div>
+      </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -144,9 +154,15 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
