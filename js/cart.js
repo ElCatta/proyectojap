@@ -22,6 +22,36 @@ function showCartProducts() {
 }
 
 
+
+async function showLocalCartProducts() {
+    let localCart = JSON.parse(localStorage.getItem("localCart"))
+    for (let i = 0; i < localCart.length; i++) {
+        
+        let product = await getJSONData(PRODUCT_INFO_URL + localCart[i].id + ".json")
+        product = product.data
+        console.log(product)
+
+
+        CART_CONTAINER.innerHTML += `
+        <tr>
+            <th scope="row"><img src="${product.images[0]}" style="width:65px;"></th>
+            <td>${product.name}</td>
+            <td>${product.currency + " " + product.cost}</td>
+            <td>
+            <input type="number" min="1" class="form-control" onchange="updateSubtotal(${cartProducts.length + i},${product.cost})" style="width:80px;" id="product${cartProducts.length + i}Quantity" value="${localCart[i].count}" required>
+            </td>
+            <td>${product.currency} <span id="product${cartProducts.length + i}Subtotal"></span></td>
+        </tr>
+        ` 
+        updateSubtotal(cartProducts.length + i, product.cost)
+    }
+}
+
+
+
+
+
+
 function updateSubtotal(index, unitCost) {
     let quantityValue = document.getElementById("product" + index + "Quantity").value;
     if (quantityValue >= 0) {
@@ -37,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
             cartProducts = resultObj.data.articles;
             showCartProducts()
+            showLocalCartProducts()
         }
     });
 });
