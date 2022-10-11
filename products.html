@@ -60,11 +60,11 @@
           </div>
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
-            <label class="btn btn-light" for="sortDesc">Mas caro</label>
+            <label class="btn btn-dark" for="sortDesc">Mas caro</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
-            <label class="btn btn-light" id="lessLabel" for="sortAsc">Mas barato</label>
+            <label class="btn btn-dark" id="lessLabel" for="sortAsc">Mas barato</label>
             <input type="radio" class="btn-check" name="options" id="sortRel" onclick="productSortRel()">
-            <label class="btn btn-light" id="relLabel" for="sortRel">Por relevancia</label>
+            <label class="btn btn-dark" id="relLabel" for="sortRel">Por relevancia</label>
           </div>
         </div>
       </div>
@@ -76,15 +76,15 @@
               <p class="font-weight-normal text-end my-2">Rango de precio</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeMin">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeMax">
+              <div class="input-group">
+                <input class="form-control" type="number" placeholder="min." id="rangeMin">
+                <input class="form-control" type="number" placeholder=" máx." id="rangeMax">
+              </div>
             </div>
             <div class="col-2 me-4">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                <button class="btn btn-outline-dark" id="clearFilters" onclick="productsClean()">Limpiar</button>
+                <button class="btn btn-dark btn-block" id="rangeFilterCost">Filtrar</button>
+                <button class="btn btn-dark" id="clearFilters" onclick="productsClean()">Limpiar</button>
               </div>
             </div>
           </div>

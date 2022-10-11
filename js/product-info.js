@@ -52,7 +52,7 @@ function showProductInfo() {
         </div>  
 
         <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>  
-        <button type="button" onClick="addToCart(`+ product.id + `)" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
+        <button type="button" onClick="addToLocalCart(`+ product.id +  `,1  )" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir <input id="countInput" type="number" style="width:50px; margin-left:5px; margin-right:5px" value="1">al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
