@@ -79,18 +79,14 @@ function loadProductInfo(id) {
 
 // LOCAL CART
 
-function addToLocalCart(id, count){
+function addToLocalCart(id){
   let localCart = JSON.parse(localStorage.getItem("localCart"));
   if (localCart.some((element) => element.id == id)){
-    localCart.find(element => element.id == id).count += count
+    localCart.find(element => element.id == id).count += 1
   } else {
-    let product = {id : id, count : count};
+    let product = {id : id, count : 1};
     localCart.push(product);
   }
   localStorage.setItem("localCart", JSON.stringify(localCart));
-}
-
-function deleteFromLocalCart(id){
-  let localCart = JSON.parse(localStorage.getItem("localCart"));
-  localCart
+  console.log("item added")
 }

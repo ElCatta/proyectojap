@@ -88,8 +88,8 @@ function showProducts(list) {
                             <small class="text-muted">` + product.soldCount + ` vendidos</small> 
                         </div>
                     </div>
-                </div>
-                <button type="button" onclick="addToLocalCart(`+ product.id + `,1)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                    </div>
+                    <button type="button" onclick="addToLocalCart(`+ product.id + `,1)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
             </div>
             `
     }
