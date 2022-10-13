@@ -9,7 +9,6 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -55,10 +54,11 @@
           <div class="input-group input-group-sm mb-5">
             <div class="input-group-prepend">
             </div>
-            <input type="search" id="browseBar" class="form-control" aria-label="Small" placeholder="Haz una búsqueda"
+            <input type="search" id="browseBar" class="form-control p-2 btn-outline-dark" aria-label="Small"
               aria-describedby="inputGroup-sizing-sm" placeholder="Realiza una búsqueda">
           </div>
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <p class="font-weight-normal text-center my-2 me-4">Ordenar</p>
             <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
             <label class="btn btn-dark" for="sortDesc">Mas caro</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
@@ -70,21 +70,22 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-          <div class="row container my-2">
+        <div class="col-lg-8 offset-4 text-end col-md-12 mb-3 ">
+          <div class="row container my-2 p-0 m-0">
             <div class="col">
               <p class="font-weight-normal text-end my-2">Rango de precio</p>
             </div>
-            <div class="col">
+            <div class="col-7 p-0">
               <div class="input-group">
-                <input class="form-control" type="number" placeholder="min." id="rangeMin">
-                <input class="form-control" type="number" placeholder=" máx." id="rangeMax">
+                <input class="form-control btn-outline-dark" type="number" placeholder="min." id="rangeMin">
+                <input class="form-control btn-outline-dark" type="number" placeholder=" máx." id="rangeMax">
+
+                <button class="btn btn-dark btn-block" id="rangeFilterCost">Filtrar</button>
               </div>
             </div>
-            <div class="col-2 me-4">
-              <div class="btn-group" role="group">
-                <button class="btn btn-dark btn-block" id="rangeFilterCost">Filtrar</button>
-                <button class="btn btn-dark" id="clearFilters" onclick="productsClean()">Limpiar</button>
+            <div class="col-1 me-4 p-0 ps-1">
+              <div class="btn-group ms-2" role="group">
+                <button class="btn btn-success" id="clearFilters" onclick="productsClean()">Limpiar</button>
               </div>
             </div>
           </div>
