@@ -73,7 +73,7 @@ function showProducts(list) {
     for (let i = 0; i < list.length; i++) {
         let product = list[i]
         htmlContentToAppend += `
-            <div class="list-group-item shadow border-light rounded mt-1 mb-4" style="cursor: pointer;">
+            <div class="shadow border-light col-12 col-md-6 rounded mt-1 mb-4 mb-md-2 px-1 p-lg-3" style="cursor: pointer;">
                 <div class="row" onclick="loadProductInfo(${product.id})">
                     <div class="col-12 mb-2">
                         <img style="border:none;" src="` + product.image + `" alt="product image" class="img-thumbnail border-0 ">
