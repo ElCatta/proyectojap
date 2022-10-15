@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,65 +43,84 @@
       </div>
     </div>
   </nav>
-  <main class="pb-5 container">
+  <main class="pb-5 container-lg">
     <div id="alertId" class="alert alert-success alert-dismissible fade hide" role="alert">
       <strong>Holy guacamole!</strong> You should check in on some of those fields below.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="text-center p-4">
-      <h2 id="catName"></h2>
-      <p class="lead">Verás aquí todas las categorías del sitio.</p>
+    <div class="text-center my-3 mt-4">
+      <h1 id="catName">
+      </h1>
     </div>
-    <div class="container">
+
+
+
+
+
+    <div class="list-group-item list-group-item-action ">
+
       <div class="row">
-        <div class="col text-end">
-          <div class="input-group input-group-sm mb-5">
-            <div class="input-group-prepend">
-            </div>
+        <div class="col">
+          <div class="input-group">
             <input type="search" id="browseBar" class="form-control p-2 btn-outline-dark" aria-label="Small"
               aria-describedby="inputGroup-sizing-sm" placeholder="Realiza una búsqueda">
           </div>
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-            <p class="font-weight-normal text-center my-2 me-4">Ordenar</p>
-            <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
-            <label class="btn btn-dark" for="sortDesc">Mas caro</label>
-            <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
-            <label class="btn btn-dark" id="lessLabel" for="sortAsc">Mas barato</label>
-            <input type="radio" class="btn-check" name="options" id="sortRel" onclick="productSortRel()">
-            <label class="btn btn-dark" id="relLabel" for="sortRel">Por relevancia</label>
-          </div>
         </div>
       </div>
+
+
+      <div class="row mt-3">
+        <div class="col-12 col-md-3 mb-2 ">
+          <h5 class="align-middle text-center m-0 mt-1">Ordenar</h5>
+        </div>
+        <div class="col-12 col-md-9 btn-group btn-group-toggle " data-bs-toggle="buttons">
+          <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
+          <label class="btn btn-dark" for="sortDesc">Mas caro</label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
+          <label class="btn btn-dark" id="lessLabel" for="sortAsc">Mas barato</label>
+          <input type="radio" class="btn-check" name="options" id="sortRel" onclick="productSortRel()">
+          <label class="btn btn-dark" id="relLabel" for="sortRel">Por relevancia</label>
+        </div>
+      </div>
+
 
       <div class="row">
-        <div class="col-lg-8 offset-4 text-end col-md-12 mb-3 ">
-          <div class="row container my-2 p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Rango de precio</p>
-            </div>
-            <div class="col-7 p-0">
-              <div class="input-group">
-                <input class="form-control btn-outline-dark" type="number" placeholder="min." id="rangeMin">
-                <input class="form-control btn-outline-dark" type="number" placeholder=" máx." id="rangeMax">
-
-                <button class="btn btn-dark btn-block" id="rangeFilterCost">Filtrar</button>
-              </div>
-            </div>
-            <div class="col-1 me-4 p-0 ps-1">
-              <div class="btn-group ms-2" role="group">
-                <button class="btn btn-success" id="clearFilters" onclick="productsClean()">Limpiar</button>
-              </div>
-            </div>
+        <div class="col-12 col-md-3 pb-md-0">
+          <h5 class="font-weight-normal text-center mt-3">Rango de precio</p>
+        </div>
+        <div class="col-12 col-md-4 mt-md-3">
+          <div class="input-group">
+            <input class="form-control btn-outline-dark" type="number" placeholder="min." id="rangeMin">
+            <input class="form-control btn-outline-dark" type="number" placeholder=" máx." id="rangeMax">
           </div>
         </div>
-      </div>
-      <div id="container-product-list">
+        <div class="col-12 col-md-5 btn-group mt-3 mb-md-1" >
+          <button class="btn btn-dark" id="rangeFilterCost">Filtrar</button>
+          <button class="btn btn-success" id="clearFilters" onclick="productsClean()">Limpiar</button>
+        </div>
       </div>
 
+
+    </div>
+
+
+
+  
+    <div class="list container-lg list-group-item-action py-0">
+      <div id="container-product-list" class="row mt-3 ">
+      </div>
     </div>
   </main>
+
+
+
+
+
+
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

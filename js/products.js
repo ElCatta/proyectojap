@@ -1,3 +1,4 @@
+
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
 let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
@@ -72,24 +73,31 @@ function showProducts(list) {
     for (let i = 0; i < list.length; i++) {
         let product = list[i]
         htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action" style="cursor: pointer;">
+            <div class="shadow border-light col-12 col-md-6 rounded mt-1 mb-4 mb-md-2 px-1 p-lg-3" style="cursor: pointer;">
                 <div class="row" onclick="loadProductInfo(${product.id})">
-                    <div class="col-3">
-                        <img src="` + product.image + `" alt="product image" class="img-thumbnail">
+                    <div class="col-12 mb-2">
+                        <img style="border:none;" src="` + product.image + `" alt="product image" class="img-thumbnail border-0 ">
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <div class="mb-1">
-                            <h4>`+ product.name + `</h4> 
-                            <p> `+ product.description + `</p> 
-                            <br> <br>
-                            <h3 class="mb-1"> $` + product.cost + ` ` + product.currency + `</h3> 
-                            </div>
-                            <small class="text-muted">` + product.soldCount + ` vendidos</small> 
-                        </div>
+                    <div class="col-12">
+                        <h3 class="mb-1"> <strong> $` + product.cost + ` ` + product.currency + ` </strong></h3>     
                     </div>
+                    <div class="col-12 mt-2">
+                        <h5 class="font-weight-strong">`+ product.name + `</h4>     
                     </div>
-                    <button type="button" onclick="addToLocalCart(`+ product.id + `,1)" class="rightbot btn btn-warning btn-sm m-3"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+
+
+
+
+                    <div class="col-12">
+                        
+                        <p> `+ product.description + `</p> 
+                                
+                    </div>
+                            
+                </div>
+                <div class="col-12">              
+                    <button type="button" onclick="addToLocalCart(`+ product.id + `,1)" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                </div>
             </div>
             `
     }
