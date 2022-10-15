@@ -90,3 +90,9 @@ function addToLocalCart(id){
   localStorage.setItem("localCart", JSON.stringify(localCart));
   console.log("item added")
 }
+
+
+function productAddSuccess(){
+  document.getElementById('alertId').classList.remove('hide')
+  document.getElementById('alertId').classList.add('show')
+}
