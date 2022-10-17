@@ -8,8 +8,8 @@ function showCartProducts() {
         let product = cartProducts[i];
         CART_CONTAINER.innerHTML += `
         <tr>
-            <th scope="row"><img src="${product.image}" style="width:65px;"></th>
-            <td>${product.name}</td>
+            <th scope="row"><img src="${product.image}" onclick="loadProductInfo(${product.id})" style="width:65px;cursor: pointer;"></th>
+            <td onclick="loadProductInfo(${product.id})" style="cursor: pointer;">${product.name}</td>
             <td>${product.currency + " " + product.unitCost}</td>
             <td>
             <input type="number" min="1" class="form-control" onchange="updateSubtotal(${i},${product.unitCost})" style="width:80px;" id="product${i}Quantity" value="${product.count}" required>
@@ -34,8 +34,8 @@ async function showLocalCartProducts() {
 
         CART_CONTAINER.innerHTML += `
         <tr>
-            <th scope="row"><img src="${product.images[0]}" style="width:65px;"></th>
-            <td>${product.name}</td>
+            <th scope="row"><img src="${product.images[0]}" onclick="loadProductInfo(${product.id})" style="width:65px;cursor: pointer;"></th>
+            <td onclick="loadProductInfo(${product.id})" style="cursor: pointer;">${product.name}</td>
             <td>${product.currency + " " + product.cost}</td>
             <td>
             <input type="number" min="1" class="form-control" onchange="updateSubtotal(${cartProducts.length + i},${product.cost})" style="width:80px;" id="product${cartProducts.length + i}Quantity" value="${localCart[i].count}" required>
