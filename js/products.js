@@ -76,21 +76,24 @@ function showProducts(list) {
             <div class="shadow border-light col-12 col-md-6 rounded mt-1 mb-4 mb-md-2 px-1 p-lg-3" style="cursor: pointer;">
                 <div class="row" onclick="loadProductInfo(${product.id})">
                     <div class="col-12 mb-2">
-                        <img style="border:none;" src="` + product.image + `" alt="product image" class="img-thumbnail border-0 ">
+                        <img style="border:none;" src="${product.image}" alt="product image" class="img-thumbnail border-0 ">
                     </div>
                     <div class="col-12">
-                        <h3 class="mb-1"> <strong> $` + product.cost + ` ` + product.currency + ` </strong></h3>     
+                        <h3 class="mb-1"> <strong> $${product.cost} ${product.currency}</strong></h3>     
                     </div>
+                    <div class="col-7 mt-2">
+                        <h5 class="font-weight-strong">${product.name}</h4>     
+                    </div>
+                    <div class="col-5 mt-2 text-end align-middle pe-3">
+                        <small style="word-wrap: break-word" class="text-muted">${product.soldCount} vendidos</small>     
+                    </div>
+
+
+
+
                     <div class="col-12 mt-2">
-                        <h5 class="font-weight-strong">`+ product.name + `</h4>     
-                    </div>
-
-
-
-
-                    <div class="col-12">
                         
-                        <p> `+ product.description + `</p> 
+                        <p> ${product.description}</p> 
                                 
                     </div>
                             

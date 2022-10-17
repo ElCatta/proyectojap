@@ -51,11 +51,9 @@ function showCategoriesList() {
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
                     </div>
                     <div class="col-7 col-md-8 my-md-0 ps-lg-4 ">
-                        <div class="d-flex w-100 justify-content-between pe-1">
-                            <h4 class="">${category.name}</h4>
-                            <small class="text-muted text-end">${category.productCount} artículos</small>
-                        </div>
-                        <p class="mb-1">${category.description}</p>
+                        <h4 class="m-0">${category.name}</h4>
+                        <small class="text-muted text-end">${category.productCount} artículos</small>
+                        <p class="mb-1 mt-1">${category.description}</p>
                     </div>
                 </div>
             </div>
