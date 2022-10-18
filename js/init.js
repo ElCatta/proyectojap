@@ -13,8 +13,8 @@ function setCatID(id) {
   window.location = "products.html"
 }
 
-if (localStorage.getItem("localCart") == undefined) {
-  localStorage.setItem("localCart", "[]")
+if (localStorage.getItem("productsCart") == undefined) {
+  localStorage.setItem("productsCart", "[]")
 }
 
 if (localStorage.getItem("currency") == undefined) {
@@ -85,15 +85,17 @@ function loadProductInfo(id) {
 
 // LOCAL CART
 
-function addToLocalCart(id){
-  let localCart = JSON.parse(localStorage.getItem("localCart"));
-  if (localCart.some((element) => element.id == id)){
-    localCart.find(element => element.id == id).count += 1
+async function addToProductsCart(id){
+  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  if (productsCart.some((element) => element.id == id)){
+    productsCart.find(element => element.id == id).count += 1
   } else {
-    let product = {id : id, count : 1};
-    localCart.push(product);
+    let productFetch = await getJSONData(PRODUCT_INFO_URL + id + ".json")
+    let productInfo = productFetch.data
+    let product = {id : id, count : 1, name : productInfo.name, unitCost : productInfo.cost , image : productInfo.images[0], currency : productInfo.currency};
+    productsCart.push(product);
   }
-  localStorage.setItem("localCart", JSON.stringify(localCart));
+  localStorage.setItem("productsCart", JSON.stringify(productsCart));
   console.log("item added")
 }
 
