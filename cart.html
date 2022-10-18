@@ -64,8 +64,9 @@
             </tbody>
           </table>
         </div>
-        <div class="list-group-item list-group-item-light">
-          <form>
+        <form>
+          <div class="list-group-item list-group-item-light">
+
             <h5>Tipo de envío</h4>
               <input type="radio" id="premium" name="delivery" value="premium" checked>
               <label for="premium">Premium 2 a 5 dias (15%)</label>
@@ -78,8 +79,8 @@
               <h5 class="mt-2 mb-2">Dirección</h4>
                 <div class="col-4">
                   <label for="calle">Calle</label>
-                  <input type="text" id="calle" name="calle" class="form-control" autocomplete="street-address" placeholder="ej. Calle Treinta y Tres"
-                    required>
+                  <input type="text" id="calle" name="calle" class="form-control" autocomplete="street-address"
+                    placeholder="ej. Calle Treinta y Tres" required>
                 </div>
                 <div class="col-2">
                   <label for="numero">Número</label>
@@ -89,10 +90,56 @@
                   <label for="esquina">Esquina</label>
                   <input type="text" class="form-control" id="esquina" name="esquina">
                 </div>
-                <input type="submit" class="my-2">
-          </form>
 
-        </div>
+
+
+          </div>
+
+          <div class="list-group-item list-group-item-light">
+            <div class="row mt-3">
+              <div class="col-10">
+                <h6>Subtotal</h6>
+              </div>
+              <div class="col-2">
+                <span id="costoSubtotal">
+                  0
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="list-group-item list-group-item-light">
+            <div class="row mt-3">
+              <div class="col-10">
+                <h6>Costo de envío</h6>
+              </div>
+              <div class="col-2">
+                <span id="costoDeEnvio">
+                  0
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="list-group-item list-group-item-light">
+            <div class="row mt-3">
+              <div class="col-10">
+                <h6>Total</h6>
+              </div>
+              <div class="col-2">
+                <span id="costoTotal">
+                  0
+                </span>
+              </div>
+            </div>
+
+
+
+
+          </div>
+          <input type="submit" class="btn-lg my-2">
+        </form>
 
       </div>
     </div>
