@@ -99,7 +99,7 @@ function showProducts(list) {
                             
                 </div>
                 <div class="col-12">              
-                    <button type="button" onclick="addToLocalCart(`+ product.id + `,1)" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                    <button type="button" onclick="addToProductsCart(${product.id})" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
                 </div>
             </div>
             `

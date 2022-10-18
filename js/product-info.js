@@ -52,20 +52,13 @@ function showProductInfo() {
         </div>  
 
         <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>  
-        <button type="button" id="addToCartBtn" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir <input id="inputCount" onclick="j" type="number" style="width:50px; margin-left:5px; margin-right:5px" value="1"> al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
+        <button type="button" onclick="addToProductsCart(${product.id})" id="addToCartBtn" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir <input id="inputCount" type="number" style="width:50px; margin-left:5px; margin-right:5px" value="1"> al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
 
 
 
-function productCount() {
-    console.log(document.getElementById("inputCount").value)
-    for (let i = 0; i < document.getElementById("inputCount").value; i++) {
-        addToLocalCart(product.id)
-
-    }
-}
 
 
 
@@ -168,12 +161,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showImagesCarousel();
 
 
-            document.getElementById("addToCartBtn").addEventListener("click", productCount)
+            // document.getElementById("addToCartBtn").addEventListener("click", productCount)
 
 
-            document.getElementById("inputCount").addEventListener("click", function (e) {
-                e.stopPropagation()
-            })
+            // document.getElementById("inputCount").addEventListener("click", function (e) {
+            //     e.stopPropagation()
+            // })
         }
     });
 
