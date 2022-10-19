@@ -83,7 +83,7 @@ function loadProductInfo(id) {
 }
 
 
-// LOCAL CART
+// CART FUNCTIONALITY
 
 async function addToProductsCart(id){
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
@@ -96,7 +96,6 @@ async function addToProductsCart(id){
     productsCart.push(product);
   }
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
-  console.log("item added")
 }
 
 
