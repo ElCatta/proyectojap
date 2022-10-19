@@ -1,4 +1,12 @@
 const CART_CONTAINER = document.getElementById("cartContainer");
+const bankAccountMethod = document.getElementById("bankAccountMethod");
+const creditCardMethod = document.getElementById("creditCardMethod");
+
+const creditCardNumber = document.getElementById("creditCardNumber");
+const securityCode = document.getElementById("securityCode");
+const creditCardExp = document.getElementById("creditCardExp");
+const bankAccountNumber = document.getElementById("bankAccountNumber")
+
 let subtotalCost = 0;
 let cartProducts = "";
 
@@ -6,11 +14,39 @@ let cartProducts = "";
 ///////////////////// PAYMENT VALIDATION SECTION //////////////////////////
 
 
+// PAYMENT METHOD SELECTION
+
+function selectBankAccount() {
+  bankAccountNumber.removeAttribute("disabled", "")
+
+  creditCardNumber.setAttribute("disabled", "")
+  securityCode.setAttribute("disabled", "")
+  creditCardExp.setAttribute("disabled", "")
+}
+
+
+function selectCreditCard() {
+  creditCardNumber.removeAttribute("disabled", "")
+  securityCode.removeAttribute("disabled", "")
+  creditCardExp.removeAttribute("disabled", "")
+
+  bankAccountNumber.setAttribute("disabled", "")
+
+}
+
+
+
+function purchaseSubmit() {
+  alert("OK")
+}
 
 
 
 
 
+function purchaseSuccess() {
+
+}
 
 
 
@@ -57,7 +93,11 @@ function removeProductFromCart(id) {
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   productsCart = productsCart.filter(product => product.id != id)
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
-  showCartProducts()
+  if (productsCart.length != 0) {
+    showCartProducts()
+  } else {
+    emptyCart()
+  }
 }
 
 
@@ -85,10 +125,10 @@ async function showCartProducts() {
     let product = productsCart[i];
 
     CART_CONTAINER.innerHTML += `
-        <tr>
-            <th scope="row"><img src="${product.image
+        <tr class="py-5 align-middle">
+            <td scope="row" class="p-1 "><img class="ms-1" src="${product.image
       }" onclick="loadProductInfo(${product.id
-      })" style="width:65px;cursor: pointer;"></th>
+      })" style="width:90px;cursor: pointer;"></td>
             <td onclick="loadProductInfo(${product.idfF
       })" style="cursor: pointer;">${product.name}</td>
             <td>${product.currency + " " + product.unitCost}</td>
@@ -100,11 +140,9 @@ async function showCartProducts() {
             <td>${product.currency} <span id="product${product.id}Subtotal"> $${product.unitCost * product.count
       }</span></td>
       <td>
-      <button class="btn btn-danger" onclick="removeProductFromCart(${product.id})"><i class="fa-sharp fa-solid fa-xmark"></i></button>
-      
+      <button class="btn btn-danger " onclick="removeProductFromCart(${product.id})"><i class="fa-solid fa-trash-can"></i></button>
       </td>
-        </tr>
-        `;
+        </tr>`;
   }
   costUpdate();
 }
@@ -112,8 +150,34 @@ async function showCartProducts() {
 // LOAD CART
 
 window.onload = function initCart() {
-  showCartProducts();
+  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  if (productsCart.length == 0) {
+    emptyCart();
+  } else {
+    showCartProducts()
+  }
 };
+
+
+// NO PRODUCTS ON CART MESSAGE
+
+function emptyCart() {
+  document.getElementById("main").innerHTML = `
+    <div class="container">
+      <div class="list-group-item list-group-item-active mt-5">
+        <div class="row"> 
+          <div class="col mt-5 text-center">
+            <h2>Oh, parece que no hay productos en tu carrito</h2>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col mt-5 text-center">
+            <button class="btn-lg btn-primary mb-4" onclick="location.href='categories.html';"> Volver a la tienda</button>
+          </div>
+        </div>
+      </div>
+    </div>`
+}
 
 
 
