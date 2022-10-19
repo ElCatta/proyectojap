@@ -147,19 +147,8 @@ async function showCartProducts() {
   costUpdate();
 }
 
-// LOAD CART
 
-window.onload = function initCart() {
-  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
-  if (productsCart.length == 0) {
-    emptyCart();
-  } else {
-    showCartProducts()
-  }
-};
-
-
-// NO PRODUCTS ON CART MESSAGE
+// EMPTY CART MESSAGE
 
 function emptyCart() {
   document.getElementById("main").innerHTML = `
@@ -179,6 +168,17 @@ function emptyCart() {
     </div>`
 }
 
+
+// LOAD CART
+
+window.onload = function initCart() {
+  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  if (productsCart.length == 0) {
+    emptyCart();
+  } else {
+    showCartProducts()
+  }
+};
 
 
 // DELIVERY METHOD SELECTION EVENT
