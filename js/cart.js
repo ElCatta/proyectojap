@@ -19,9 +19,9 @@ let cartProducts = "";
 // COST CALCULATIONS
 
 function costUpdate() {
- subtotalCalc()
- deliveryCostCalc()
- totalCostCalc()
+  subtotalCalc()
+  deliveryCostCalc()
+  totalCostCalc()
 }
 
 function subtotalCalc() {
@@ -51,7 +51,15 @@ function totalCostCalc() {
   document.getElementById("totalCost").innerText = "USD " + "$" + totalcost;
 }
 
-// CHANGE PRODUCT QUANTITY
+// MANAGE PRODUCTS
+
+function removeProductFromCart(id) {
+  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  productsCart = productsCart.filter(product => product.id != id)
+  localStorage.setItem("productsCart", JSON.stringify(productsCart));
+  showCartProducts()
+}
+
 
 function changeProductCount(id) {
   let count = document.getElementById("product" + id + "Count").value;
@@ -67,10 +75,6 @@ function changeProductCount(id) {
   costUpdate();
 }
 
-// DELIVERY METHOD SELECTION 
-
-let deliveryMethods = document.querySelectorAll('input[type=radio][name="delivery"]');
-deliveryMethods.forEach(radio => radio.addEventListener('change', () => costUpdate()));
 
 // PRINT CART
 
@@ -85,7 +89,7 @@ async function showCartProducts() {
             <th scope="row"><img src="${product.image
       }" onclick="loadProductInfo(${product.id
       })" style="width:65px;cursor: pointer;"></th>
-            <td onclick="loadProductInfo(${product.id
+            <td onclick="loadProductInfo(${product.idfF
       })" style="cursor: pointer;">${product.name}</td>
             <td>${product.currency + " " + product.unitCost}</td>
             <td>
@@ -95,6 +99,10 @@ async function showCartProducts() {
             </td>
             <td>${product.currency} <span id="product${product.id}Subtotal"> $${product.unitCost * product.count
       }</span></td>
+      <td>
+      <button class="btn btn-danger" onclick="removeProductFromCart(${product.id})"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      
+      </td>
         </tr>
         `;
   }
@@ -107,3 +115,9 @@ window.onload = function initCart() {
   showCartProducts();
 };
 
+
+
+// DELIVERY METHOD SELECTION EVENT
+
+let deliveryMethods = document.querySelectorAll('input[type=radio][name="delivery"]');
+deliveryMethods.forEach(radio => radio.addEventListener('change', () => costUpdate()));
