@@ -13,6 +13,28 @@ let cartProducts = "";
 
 ///////////////////// PAYMENT VALIDATION SECTION //////////////////////////
 
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
 
 // PAYMENT METHOD SELECTION
 
@@ -34,19 +56,16 @@ function selectCreditCard() {
 
 }
 
-
-
-function purchaseSubmit() {
-  alert("OK")
+function validatePaymentMethod(){
+  if (document.getElementById("creditCardMethod").checked && creditCardNumber.checkValidity() && securityCode.checkValidity() && creditCardExp.checkValidity()){
+    document.getElementById("paymentMethodStatus").innerText = "Tarjeta de credito seleccionada"
+    document.getElementById("paymentMethodStatus").style.color = "green"
+  } else if (document.getElementById("bankAccountMethod").checked && bankAccountNumber.checkValidity()){
+    document.getElementById("paymentMethodStatus").innerText = "Cuenta bancaria seleccionada"
+    document.getElementById("paymentMethodStatus").style.color = "green"
+  } 
 }
 
-
-
-
-
-function purchaseSuccess() {
-
-}
 
 
 

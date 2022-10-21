@@ -67,7 +67,7 @@
 
         <hr class="my-3">
 
-        <form onsubmit="purchaseSubmit()">
+        <form class="needs-validation" novalidate>
           <div class="list-group-item list-group-item-light">
             <h4 class="my-3">Tipo de envío</h4>
             <input type="radio" id="premium" name="delivery" value="0.15" checked>
@@ -134,7 +134,7 @@
           <div class="list-group-item list-group-item-light">
             <h5>Forma de pago</h5>
             <div class="d-flex">
-              <span>No ha seleccionado</span>
+              <span style="color:red;" id="paymentMethodStatus">No ha seleccionado</span>
               <a class="ms-3" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Seleccionar
               </a>
@@ -150,7 +150,7 @@
                   </div>
 
                   <div class="modal-body">
-
+                  
                     <div class="row">
                       <div class="col">
                         <input type="radio" id="creditCardMethod" onclick="selectCreditCard()" name="paymentMethod"
@@ -166,18 +166,18 @@
                     <div class="row">
                       <div class="col-7">
                         <label for="">Numero de tarjeta de crédito</label>
-                        <input type="text" id="creditCardNumber" class="form-control" autocomplete="cc-number" >
+                        <input type="text" id="creditCardNumber" minlength="6" class="form-control" autocomplete="cc-number" required>
                       </div>
                       <div class="col-4">
-                        <label for="securityCode">Código de seg.</label>
-                        <input type="text" id="securityCode" class="form-control" >
+                        <label for="securityCode" >Código de seg.</label>
+                        <input type="text" minlength="3" id="securityCode" class="form-control" required >
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-7">
                         <label for="creditCardExp">Fecha de vencimiento(MM/AA)</label>
-                        <input type="text" id="creditCardExp" class="form-control" autocomplete="cc-number">
+                        <input type="text" minlength="5" id="creditCardExp" class="form-control" autocomplete="cc-number" required>
                       </div>
                     </div>
 
@@ -194,25 +194,27 @@
                     <div class="row">
                       <div class="col-7">
                         <label for="">Número de cuenta</label>
-                        <input type="text" id="bankAccountNumber" class="form-control" autocomplete="" disabled
+                        <input type="text" minlength="20" id="bankAccountNumber" class="form-control" autocomplete="" disabled
                           required>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="validatePaymentMethod()" data-bs-dismiss="modal">Cerrar</button>
                   </div>
+                  
                 </div>
               </div>
             </div>
 
             <div class="row">
               <div class="col-12">
-                <button type="submit" class="btn btn-success mt-3 w-100">Confirmar compra</button>
+                <button type="submit" class="btn btn-success mt-3 w-100" >Confirmar compra</button>
               </div>
             </div>
 
           </div>
+          
         </form>
       </div>
     </div>
