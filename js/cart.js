@@ -117,6 +117,7 @@ function removeProductFromCart(id) {
   } else {
     emptyCart()
   }
+  cartBadge()
 }
 
 

@@ -96,7 +96,23 @@ async function addToProductsCart(id){
     productsCart.push(product);
   }
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
+  cartBadge()
 }
+
+function cartBadge(){
+
+  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  console.log(productsCart.length)
+  if (productsCart.length >= 1){
+    
+    document.getElementById("cartBadge").style.display = ""
+    document.getElementById("cartBadge").innerText = productsCart.length
+  } else {
+    document.getElementById("cartBadge").style.display = "none"
+  }
+}
+
+window.onload = cartBadge()
 
 
 function productAddSuccess(){
