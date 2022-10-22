@@ -11,11 +11,18 @@ let subtotalCost = 0;
 let cartProducts = "";
 
 
-///////////////////// PAYMENT VALIDATION SECTION //////////////////////////
+///////////////////// PAYMENT SECTION //////////////////////////
+
+
+function paymentSuccess() {
+  document.getElementById("main").innerHTML += `<div class="alert alert-success" role="alert">
+  La compra ha sido realizada correctamente!
+  </div>`
+}
 
 
 
-// BOOTSTRAP VALIDATION
+// BOOTSTRAP VALIDATIONS
 
 (function () {
   'use strict'
@@ -26,8 +33,10 @@ let cartProducts = "";
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
+        } else{
+          paymentSuccess()
         }
-
+      
         form.classList.add('was-validated')
       }, false)
     })
@@ -55,11 +64,11 @@ function selectCreditCard() {
 
 }
 
-function validatePaymentMethod(){
-  if (document.getElementById("creditCardMethod").checked && creditCardNumber.checkValidity() && securityCode.checkValidity() && creditCardExp.checkValidity()){
+function validatePaymentMethod() {
+  if (document.getElementById("creditCardMethod").checked && creditCardNumber.checkValidity() && securityCode.checkValidity() && creditCardExp.checkValidity()) {
     document.getElementById("paymentMethodStatus").innerText = "Tarjeta de credito seleccionada"
     document.getElementById("paymentMethodStatus").style.color = "green"
-  } else if (document.getElementById("bankAccountMethod").checked && bankAccountNumber.checkValidity()){
+  } else if (document.getElementById("bankAccountMethod").checked && bankAccountNumber.checkValidity()) {
     document.getElementById("paymentMethodStatus").innerText = "Cuenta bancaria seleccionada"
     document.getElementById("paymentMethodStatus").style.color = "green"
   } else {
