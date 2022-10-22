@@ -21,6 +21,29 @@ function paymentSuccess() {
 }
 
 
+function purchaseSuccessfulAlert() {
+  document.getElementById("main").innerHTML = `
+    <div class="container ">
+      <div class="list-group-item list-group-item-active mt-5 text-center">
+      <div class="row"> 
+      <div class="col mt-3">
+      <img class="image-fluid" src="/img/success.png" style="width:120px;">
+      </div>  
+      </div>
+      <div class="row"> 
+          <div class="col mt-4 ">
+            <h2>La compra ha sido realizada corréctamente</h2>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col mt-4 text-center">
+            <button class="btn-lg btn-success mb-4" onclick="location.href='my-purchases.html';"> Ver mis compras</button>
+          </div>
+        </div>
+      </div>
+    </div>`
+}
+
 
 // BOOTSTRAP VALIDATIONS
 
@@ -35,6 +58,8 @@ function paymentSuccess() {
           event.stopPropagation()
         } else{
           paymentSuccess()
+          buyCart()
+          purchaseSuccessfulAlert()
         }
       
         form.classList.add('was-validated')
@@ -124,7 +149,7 @@ function removeProductFromCart(id) {
   if (productsCart.length != 0) {
     showCartProducts()
   } else {
-    emptyCart()
+    emptyCartAlert()
   }
   cartBadge()
 }
@@ -177,9 +202,9 @@ async function showCartProducts() {
 }
 
 
-// EMPTY CART MESSAGE
+// EMPTY CART ALERT
 
-function emptyCart() {
+function emptyCartAlert() {
   document.getElementById("main").innerHTML = `
     <div class="container">
       <div class="list-group-item list-group-item-active mt-5">
@@ -203,7 +228,7 @@ function emptyCart() {
 window.onload = function initCart() {
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   if (productsCart.length == 0) {
-    emptyCart();
+    emptyCartAlert();
   } else {
     showCartProducts()
   }

@@ -5,10 +5,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Lo que buscás</title>
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -34,8 +33,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito  <span id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
-              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a>
+              <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="cartBadge"
+                    class="badge rounded-pill bg-danger"></span></a></li>
+              <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
               </li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
@@ -46,57 +46,26 @@
       </div>
     </div>
   </nav>
-  <main class="container-lg pb-5">
-    <div class="text-center p-4 pb-1">
-      <h1>Categorías</h2>
-        <p class="lead">Verás aquí todas las categorías del sitio.</p>
-    </div>
-
-    <div class="list-group-item list-group-item-action pb-0 ">
-
-
-      <div class="row">
-        <div class="col-12 col-md-3 ">
-          <h5 class="align-middle text-center m-0 mt-1">Ordenar</p>
-        </div>
-        <div class="col-12 col-md-9 btn-group btn-group-toggle" data-bs-toggle="buttons">
-          <input type="radio" class="btn-check" name="options" id="sortAsc">
-          <label class="btn btn-dark" for="sortAsc" id="ascLabel">A-Z</label>
-          <input type="radio" class="btn-check" name="options" id="sortDesc">
-          <label class="btn btn-dark" for="sortDesc" id="descLabel">Z-A</label>
-          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-          <label class="btn btn-dark" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i> Cantidad </label>
-        </div>
-      </div>
-
-
-
-      <div class="row mb-4">
-        <div class="col-12 col-md-3">
-          <h5 class="font-weight-normal text-center mt-3 pb-md-0">Filtro de cantidad</p>
-        </div>
-        <div class="col-12 col-md-4 mt-md-3">
-          <div class="input-group">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-        </div>
-        <div class="col-12 col-md-5 btn-group mt-3 mb-md-1">
-          <button class="btn btn-dark " id="rangeFilterCount">Filtrar</button>
-          <button class="btn btn-success " id="clearRangeFilter">Limpiar</button>
+  <main>
+    <div class="container-lg">
+      <h2 class="my-4 text-center mb-5">Compras realizadas</h2>
+      <div class="list-group">
+        <div class="list-group-item list-group-item-light mb-2">
+          <table class="table table-light table-striped">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Costo Total</th>
+              </tr>
+            </thead>
+            <tbody id="purchasesContainer"></tbody>
+          </table>
         </div>
       </div>
     </div>
-
-
-
-    <div class="list container-lg list-group-item-action py-0 mt-2">
-      <div class="row" id="cat-list-container">
-      </div>
-    </div>
-
-
-
 
   </main>
   <footer class="text-muted">
@@ -119,7 +88,7 @@
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/categories.js"></script>
+  <script src="js/my-purchases.js"></script>
   <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
 </body>
 
