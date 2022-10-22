@@ -102,7 +102,6 @@ async function addToProductsCart(id){
 function cartBadge(){
 
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
-  console.log(productsCart.length)
   if (productsCart.length >= 1){
     
     document.getElementById("cartBadge").style.display = ""
