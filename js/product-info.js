@@ -43,22 +43,33 @@ function showProductInfo() {
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <p>
                 <b><h5 class="mb-3"> Cantidad vendidos: </h5></b>
                 <h5>`+ product.soldCount + `</h5>
                 </p>
             </div>
-        </div>  
-
-        <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>  
-        <button type="button" onclick="addToProductsCart(${product.id})" id="addToCartBtn" class="rightbot btn btn-warning btn-sm m-4"><h5>Añadir <input id="inputCount" type="number" style="width:50px; margin-left:5px; margin-right:5px" value="1"> al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button>  
+            <div class="col-6 rightbot text-end pb-3">
+                <span>Cantidad:</span>
+                <input id="inputCount" min="1" type="number" style="width:50px; height:35px" value="1">
+                <button type="button" id="addToCartBtn" class="btn btn-warning btn-sm"><h5>Añadir  al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h5></button> 
+            </div>
+            
+        </div>
+         <button type="button" onClick="javascript:window.location.href='products.html'" class="righttop btn btn-primary m-2"><span>Volver atrás </span></button>    
+       
     </div>`
     infoContainer.innerHTML = contentToAppend;
 }
 
 
 
+function productCount() {
+    for (let i = 0; i < document.getElementById("inputCount").value; i++) {
+        addToProductsCart(product.id)
+
+    }
+}
 
 
 
@@ -161,12 +172,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showImagesCarousel();
 
 
-            // document.getElementById("addToCartBtn").addEventListener("click", productCount)
+            document.getElementById("addToCartBtn").addEventListener("click", productCount)
 
 
-            // document.getElementById("inputCount").addEventListener("click", function (e) {
-            //     e.stopPropagation()
-            // })
+            document.getElementById("inputCount").addEventListener("click", function (e) {
+                e.stopPropagation()
+            })
         }
     });
 
