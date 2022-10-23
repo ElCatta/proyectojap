@@ -27,7 +27,7 @@ function purchaseSuccessfulAlert() {
       <div class="list-group-item list-group-item-active mt-5 text-center">
       <div class="row"> 
       <div class="col mt-3">
-      <img class="image-fluid" src="../img/success.png" style="width:120px;">
+      <img class="image-fluid" src="img/success.png" style="width:120px;">
       </div>  
       </div>
       <div class="row"> 
