@@ -122,5 +122,3 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 
 document.getElementById('browseBar').addEventListener('input', searchAndFilter);
-document.getElementById("rangeMin").addEventListener('input', searchAndFilter);
-document.getElementById("rangeMax").addEventListener('input', searchAndFilter);

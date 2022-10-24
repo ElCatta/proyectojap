@@ -34,11 +34,9 @@
               aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
               <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
-              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a>
-              </li>
+              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a></li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
-              </li>
+              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a></li>
             </ul>
           </li>
         </ul>
@@ -99,7 +97,7 @@
           </div>
         </div>
         <div class="col-12 col-md-5 btn-group mt-3 mb-md-1" >
-          <button class="btn btn-dark" id="rangeFilterCost">Filtrar</button>
+          <button class="btn btn-dark" onclick="searchAndFilter()" id="rangeFilterCost">Filtrar</button>
           <button class="btn btn-success" id="clearFilters" onclick="productsClean()">Limpiar</button>
         </div>
       </div>
