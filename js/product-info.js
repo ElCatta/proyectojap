@@ -11,9 +11,10 @@ let product, comments = "";
 
 
 // SELECT PRODUCT COUNT
-function productCount() {
+async function productCount() {
     for (let i = 0; i < document.getElementById("inputCount").value; i++) {
-        addToProductsCart(product.id)
+        await addToProductsCart(product.id)
+        productAddAlert(document.getElementById("inputCount").value)
 
     }
 }
@@ -103,8 +104,6 @@ function commentRating(commentScore) {
     return rating;
 }
 
-// PRINT COMMENTS
-
 function showProductComments() {
     for (let i = 0; i < comments.length; i++) {
         commentsContainer.innerHTML +=
@@ -127,8 +126,6 @@ function showProductComments() {
     };
 }
 
-
-// ADD COMMENT
 
 function newComment() {
     commentsContainer.innerHTML +=
@@ -180,10 +177,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             document.getElementById("addToCartBtn").addEventListener("click", productCount)
 
-
-            document.getElementById("inputCount").addEventListener("click", function (e) {
-                e.stopPropagation()
-            })
         }
     });
 

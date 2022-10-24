@@ -1,4 +1,3 @@
-
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
 let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
@@ -87,19 +86,14 @@ function showProducts(list) {
                     <div class="col-5 mt-2 text-end align-middle pe-3">
                         <small style="word-wrap: break-word" class="text-muted">${product.soldCount} vendidos</small>     
                     </div>
-
-
-
-
                     <div class="col-12 mt-2">
                         
                         <p> ${product.description}</p> 
                                 
                     </div>
-                            
                 </div>
                 <div class="col-12">              
-                    <button type="button" onclick="addToProductsCart(${product.id})" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                    <button type="button" onclick="addToProductsCart(${product.id}); productAddAlert(1);" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
                 </div>
             </div>
             `

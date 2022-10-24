@@ -14,7 +14,7 @@ function dateAndHour() {
   var currentdate = new Date();
   var datetime = currentdate.getDate() + "/"
     + (currentdate.getMonth() + 1) + "/"
-    + currentdate.getFullYear() 
+    + currentdate.getFullYear()
   return datetime
 }
 
@@ -89,7 +89,7 @@ function logOut() {
 }
 
 
-// PRODUCT ID
+// PRODUCT INFO ID
 
 function loadProductInfo(id) {
   localStorage.setItem("productId", id);
@@ -103,21 +103,22 @@ async function addToProductsCart(id) {
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   if (productsCart.some((element) => element.id == id)) {
     productsCart.find(element => element.id == id).count += 1
+    console.log("count +1")
   } else {
     let productFetch = await getJSONData(PRODUCT_INFO_URL + id + ".json")
     let productInfo = productFetch.data
     let product = { id: id, count: 1, name: productInfo.name, unitCost: productInfo.cost, image: productInfo.images[0], currency: productInfo.currency };
     productsCart.push(product);
+
+    console.log("item created")
   }
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
   cartBadge()
 }
 
 function cartBadge() {
-
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   if (productsCart.length >= 1) {
-
     document.getElementById("cartBadge").style.display = ""
     document.getElementById("cartBadge").innerText = productsCart.length
   } else {
@@ -130,12 +131,14 @@ function purgeCart() {
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
 }
 
-function productAddSuccess() {
-  document.getElementById('alertId').classList.remove('hide')
-  document.getElementById('alertId').classList.add('show')
+function productAddAlert(number) {
+  document.getElementById("main").innerHTML += `
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"></use></svg>
+    Ha añadido ${number} producto/s a su carrito! 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>`
 }
-
-
 
 window.onload = cartBadge()
 
