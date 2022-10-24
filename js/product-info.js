@@ -8,7 +8,17 @@ const imagesCarousel = document.getElementById("imagesCarousel");
 let product, comments = "";
 
 
-// PRODUCT INFO 
+
+
+// SELECT PRODUCT COUNT
+function productCount() {
+    for (let i = 0; i < document.getElementById("inputCount").value; i++) {
+        addToProductsCart(product.id)
+
+    }
+}
+
+// PRINT PRODUCT INFO 
 
 function showProductInfo() {
     let contentToAppend = `
@@ -64,15 +74,6 @@ function showProductInfo() {
 
 
 
-function productCount() {
-    for (let i = 0; i < document.getElementById("inputCount").value; i++) {
-        addToProductsCart(product.id)
-
-    }
-}
-
-
-
 // PRODUCT IMAGES
 
 function showImagesCarousel() {
@@ -102,6 +103,8 @@ function commentRating(commentScore) {
     return rating;
 }
 
+// PRINT COMMENTS
+
 function showProductComments() {
     for (let i = 0; i < comments.length; i++) {
         commentsContainer.innerHTML +=
@@ -123,6 +126,9 @@ function showProductComments() {
             </div>`
     };
 }
+
+
+// ADD COMMENT
 
 function newComment() {
     commentsContainer.innerHTML +=
