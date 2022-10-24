@@ -153,7 +153,7 @@ function showRelatedProducts() {
     for (let i = 0; i < 4; i++) {
         if (relatedProducts[i].id != localStorage.getItem("productId")) {
             relatedProductsContainer.innerHTML += `
-                <div class="card col-md-4 col-sm-12" onclick="loadProductInfo(${relatedProducts[i].id})">
+                <div class="card col-md-4 col-sm-12 popout p-0" onclick="loadProductInfo(${relatedProducts[i].id})">
                 <img class="card-img-top" src="`+ relatedProducts[i].image + `" alt="` + relatedProducts[i].name + `">
                     <div class="card-body">
                     <h4 class="card-title text-center">`+ relatedProducts[i].name + `</h4>  
