@@ -191,7 +191,7 @@ async function showCartProducts() {
       }Count" class="form-control" onchange="changeProductCount(${product.id
       })" style="width:80px;" value="${product.count}" required>
             </td>
-            <td>${product.currency} <span id="product${product.id}Subtotal"> $${product.unitCost * product.count
+            <td>${product.currency} $<span id="product${product.id}Subtotal">${product.unitCost * product.count
       }</span></td>
       <td>
       <button class="btn btn-danger " onclick="removeProductFromCart(${product.id})"><i class="fa-solid fa-trash-can"></i></button>
