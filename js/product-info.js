@@ -13,8 +13,7 @@ let product, comments = "";
 // SELECT PRODUCT COUNT
 async function productCount() {
     for (let i = 0; i < document.getElementById("inputCount").value; i++) {
-        await addToProductsCart(product.id)
-        productAddAlert(document.getElementById("inputCount").value)
+        await addToProductsCart(product.id);
 
     }
 }
