@@ -1,54 +1,56 @@
 const CATEGORIES_URL = "https://japceibal.github.io/emercado-api/cats/cat.json";
-const PUBLISH_PRODUCT_URL = "https://japceibal.github.io/emercado-api/sell/publish.json";
+const PUBLISH_PRODUCT_URL =
+  "https://japceibal.github.io/emercado-api/sell/publish.json";
 const PRODUCTS_URL = "https://japceibal.github.io/emercado-api/cats_products/";
 const PRODUCT_INFO_URL = "https://japceibal.github.io/emercado-api/products/";
-const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/products_comments/";
+const PRODUCT_INFO_COMMENTS_URL =
+  "https://japceibal.github.io/emercado-api/products_comments/";
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-
-
-
+const userField = document.getElementById("userFieldDropdown");
 
 function dateAndHour() {
   var currentdate = new Date();
-  var datetime = currentdate.getDate() + "/"
-    + (currentdate.getMonth() + 1) + "/"
-    + currentdate.getFullYear()
-  return datetime
+  var datetime =
+    currentdate.getDate() +
+    "/" +
+    (currentdate.getMonth() + 1) +
+    "/" +
+    currentdate.getFullYear();
+  return datetime;
 }
 
 function setCatID(id) {
   localStorage.setItem("catID", id);
-  window.location = "products.html"
+  window.location = "products.html";
 }
 
 if (localStorage.getItem("productsCart") == undefined) {
-  localStorage.setItem("productsCart", "[]")
+  localStorage.setItem("productsCart", "[]");
 }
 
 if (localStorage.getItem("myPurchases") == undefined) {
-  localStorage.setItem("myPurchases", "[]")
+  localStorage.setItem("myPurchases", "[]");
 }
 
 if (localStorage.getItem("currency") == undefined) {
-  localStorage.setItem("currency", "UYU")
+  localStorage.setItem("currency", "UYU");
 }
-
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
-}
+};
 
 let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
-}
+};
 
 let getJSONData = function (url) {
   let result = {};
   showSpinner();
   return fetch(url)
-    .then(response => {
+    .then((response) => {
       if (response.ok) {
         return response.json();
       } else {
@@ -56,38 +58,35 @@ let getJSONData = function (url) {
       }
     })
     .then(function (response) {
-      result.status = 'ok';
+      result.status = "ok";
       result.data = response;
       hideSpinner();
       return result;
     })
     .catch(function (error) {
-      result.status = 'error';
+      result.status = "error";
       result.data = error;
       hideSpinner();
       return result;
     });
-}
+};
 
 // USER PROFILE
 
 function showUserId() {
-  if (localStorage.getItem("userId") != "") {
-    document.getElementById("userFieldDropdown").innerText = localStorage.getItem("userId");
-  } else {
-    document.getElementById("userFieldDropdown").innerText = "Usuario";
-  }
+  localStorage.getItem("userId") != ""
+    ? (userField.innerText = localStorage.getItem("userId"))
+    : (userField.innerText = "Usuario");
 }
 
 if (window.addEventListener) {
-  window.addEventListener('load', showUserId);
+  window.addEventListener("load", showUserId);
 }
 
 function logOut() {
   localStorage.setItem("userId", "");
   window.location.replace("home.html");
 }
-
 
 // PRODUCT INFO ID
 
@@ -96,54 +95,59 @@ function loadProductInfo(id) {
   window.location = "product-info.html";
 }
 
-
-// CART 
+// CART
 
 async function addToProductsCart(id) {
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   if (productsCart.some((element) => element.id == id)) {
-    productsCart.find(element => element.id == id).count += 1
-    console.log("count +1")
+    productsCart.find((element) => element.id == id).count += 1;
+    console.log("count +1");
   } else {
-    let productFetch = await getJSONData(PRODUCT_INFO_URL + id + ".json")
-    let productInfo = productFetch.data
-    let product = { id: id, count: 1, name: productInfo.name, unitCost: productInfo.cost, image: productInfo.images[0], currency: productInfo.currency };
+    let product = await getJSONData(PRODUCT_INFO_URL + id + ".json");
+    product = {
+      id: id,
+      count: 1,
+      name: product.data.name,
+      unitCost: product.data.cost,
+      image: product.data.images[0],
+      currency: product.data.currency,
+    };
     productsCart.push(product);
-
-    console.log("item created")
+    console.log("item created");
   }
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
-  cartBadge()
+  cartBadge();
 }
+
 
 function cartBadge() {
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   if (productsCart.length >= 1) {
-    document.getElementById("cartBadge").style.display = ""
-    document.getElementById("cartBadge").innerText = productsCart.length
+    document.getElementById("cartBadge").style.display = "";
+    document.getElementById("cartBadge").innerText = productsCart.length;
   } else {
-    document.getElementById("cartBadge").style.display = "none"
+    document.getElementById("cartBadge").style.display = "none";
   }
 }
 
 function purgeCart() {
-  productsCart = []
+  productsCart = [];
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
 }
 
-
-window.onload = cartBadge()
+window.onload = cartBadge();
 
 // MY PURCHASES
 
 function buyCart() {
-  let myPurchases = JSON.parse(localStorage.getItem("myPurchases"))
+  let myPurchases = JSON.parse(localStorage.getItem("myPurchases"));
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   for (let i = 0; i < productsCart.length; i++) {
-    productsCart[i].date = dateAndHour()
-    productsCart[i].totalcost = productsCart[i].unitCost * productsCart[i].count
+    productsCart[i].date = dateAndHour();
+    productsCart[i].totalcost =
+      productsCart[i].unitCost * productsCart[i].count;
     myPurchases.push(productsCart[i]);
   }
-  localStorage.setItem("myPurchases", JSON.stringify(myPurchases))
-  purgeCart()
+  localStorage.setItem("myPurchases", JSON.stringify(myPurchases));
+  purgeCart();
 }
