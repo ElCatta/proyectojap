@@ -26,7 +26,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark pt-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item align-middle">
+            <img src="img/emercado.pngs.png" style="width:150px;" class="mt-2" alt="">
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="home.html">Inicio</a>
           </li>
@@ -43,14 +46,18 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Mi carrito <span id="cartBadge"
+                class="badge rounded-pill bg-danger"></span></a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
-              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a></li>
+  
+              <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
+              </li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
+              </li>
             </ul>
           </li>
         </ul>
