@@ -1,6 +1,6 @@
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
 let productList = ""
-let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
+
 let rangeMin = document.getElementById("rangeMin");
 let rangeMax = document.getElementById("rangeMax");
 let searchBar = document.getElementById('browseBar');

@@ -2,7 +2,7 @@
 .card-body,
 .container,
 .site-header {
-  font-family: 'Raleway', serif !important;
+  font-family: "Raleway", serif !important;
 }
 
 .jumbotron .display-4 {
@@ -32,8 +32,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
+  background-color: #53c0fb;
+  background: url("../img/cover_back.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -73,12 +73,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color .15s;
+  transition: ease-in-out color 0.15s;
 }
 
 .site-header .dropdown-menu a {
@@ -86,7 +86,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed #0087f7;
   border-radius: 5px;
   background: white;
 }
@@ -215,28 +215,27 @@ a.custom-card:hover {
 /* PRODUCT INFO */
 
 .popout {
-
   animation: scaledown 0.4s linear;
   animation-fill-mode: forwards;
   transform-origin: 50% 50%;
-  -webkit-animation: scaledown .4s ease;
+  -webkit-animation: scaledown 0.4s ease;
 }
 
 .popout:hover {
-  -webkit-animation: scale .4s ease;
+  -webkit-animation: scale 0.4s ease;
   z-index: 100;
   animation: scale 0.4s linear;
   animation-fill-mode: forwards;
 }
 
-@keyframes scaledown{
-  0%{
+@keyframes scaledown {
+  0% {
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
   }
-  100%{
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
 }
 
@@ -253,7 +252,6 @@ a.custom-card:hover {
   }
 }
 
-
 /* CAROUSEL ARROW COLORS */
 
 .carousel-control-next-icon {
@@ -261,4 +259,20 @@ a.custom-card:hover {
 }
 .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+@media only screen and (max-width: 768px) {
+  #product-comments-container {
+    max-height: none;
+    overflow-y: none;
+  }
+}
+
+
+
+@media only screen and (min-width: 768px) {
+  #product-comments-container {
+     max-height: 500px;
+  overflow-y: scroll;
+  }
 }
