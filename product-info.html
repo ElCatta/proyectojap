@@ -25,17 +25,53 @@
         d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
     </symbol>
   </svg>
+
+
+  <style>
+    @import url('http://fonts.cdnfonts.com/css/montserrat');
+
+    @import url('http://fonts.cdnfonts.com/css/roboto');
+
+    * {
+      font-family: 'Montserrat', 'Roboto'
+    }
+
+    .small-img-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .small-img-col {
+      flex-basis: 33%;
+      cursor: pointer;
+    }
+
+    #addToCartBtn {
+      background-color: #ffa500;
+
+    }
+
+    #inputCount {
+      height: 37px;
+    }
+  </style>
+
 </head>
+
+
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
+    <div class="container-md">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item align-middle">
+            <img src="img/emercado.pngs.png" style="width:150px;" class="mt-2" alt="">
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="home.html">Inicio</a>
           </li>
@@ -45,17 +81,18 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Mi carrito <span id="cartBadge"
+                class="badge rounded-pill bg-danger"></span></a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito <span id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
-              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a>
+
+              <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
               </li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
               <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
               </li>
-
             </ul>
           </li>
         </ul>
@@ -63,90 +100,116 @@
     </div>
   </nav>
   <main id="main">
+    <section class="container-md pt-4 mt-2 pb-2">
+      <div class="row py-3 border border-3 border-light">
+        <div id="images-row" class="col-2 col-md-2 col-lg-1 d-md-block p-0 pe-2">
 
-    <div id="product-info-container" class="container-lg">
-    </div>
 
-    <div class="container-lg">
-      <div class="list-group-item list-group-item-action">
-        <h4>Fotos del artículo:</h4>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
+        </div>
+        <div class="col-10 col-md-6 col-lg-7 ps-1 mb-2">
+          <div id="thumbnail-container" class="overflow-hidden">
+            <img id="image-thumbnail" src="" class="img-fluid p-0" alt="">
           </div>
-          <div id="imagesCarousel" class="carousel-inner">
+        </div>
+        <div id="product-info-container" class="col-12 col-md-4 col-lg-4">
+
+        </div>
+        <div class="row d-none d-md-block d-lg-none ps-3">
+          <h3 class="pt-3 pb-1">Detalles del producto</h3>
+          <p id="altProductDesc"></p>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="container-md">
+
+      <h3 class="mt-2 mt-md-2 mb-4"> Información del producto</h3>
+      <div class="row border border-3 border-light">
+        <h5>Lorem</h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis doloremque odit recusandae error! Non
+          repellat vero mollitia et, soluta ullam voluptates magni perferendis! Architecto sit praesentium sed nulla
+          maiores, expedita excepturi id ab et cupiditate esse? Ut reprehenderit a quae cumque facilis aliquam, quaerat
+          neque excepturi blanditiis nisi minima. Qui impedit ut, Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, dolore!</p>
+        <h5>Odit</h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis doloremque odit recusandae error! Non
+          repellat vero mollitia et, soluta ullam voluptates magni perferendis! Architecto sit praesentium sed nulla
+          maiores, expedita excepturi id ab et cupiditate esse? Ut reprehenderit a quae cumque facilis aliquam, quaerat
+          neque excepturi blanditiis nisi minima. Qui impedit ut, Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, dolore!</p>
+        <h5>Elit</h5>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis doloremque odit recusandae error! Non
+          repellat vero mollitia et, soluta ullam voluptates magni perferendis! Architecto sit praesentium sed nulla
+          maiores, expedita excepturi id ab et cupiditate esse? Ut reprehenderit a quae cumque facilis aliquam, quaerat
+          neque excepturi blanditiis nisi minima. Qui impedit ut, Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, dolore!</p>
+
+
+      </div>
+    </section>
+    <div class="container-md">
+      <h3 class="mt-3 mt-md-2 mb-4"> Opiniones</h3>
+      <section class="border border-3 border-light px-2">
+
+        <div class="row ">
+          <div id="product-comments-container" class="col-12 col-md-8">
+
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
+          <div class="col-12 col-md-4 mt-4 m-md-0">
+            <div class="">
+              <form onsubmit="newComment() ;return false">
+                <div class="row my-3">
+                  <div class="col-8 mx-4">
+                    <label class="mb-3" for="newCommentBox">
+                      <h4>Deja tu opinión</h4>
+                    </label>
+                    <textarea id="newCommentText" class="form-control" placeholder="Escribe aquí" id="newCommentBox"
+                      style="height: 100px" required></textarea>
+                  </div>
+                </div>
 
-      <div id="product-comments-container" class="container-lg my-3">
-        <div class="list-group-item list-group-item-action">
-          <h4 class="my-3 ms-4">Comentarios del producto:</h4>
-        </div>
-      </div>
+                <div class="row my-3">
+                  <div class="col-4 mx-4">
+                    <label for="floatingSelect"><span>Elije la puntuación </span></label>
+                    <select class="form-select" style="width: 80px" id="newCommentScore">
+                      <option selected value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
 
-      <div class="container-lg">
-        <div class="list-group-item list-group-item-action">
-          <form onsubmit="newComment() ;return false">
-            <div class="row my-3">
-              <div class="col-8 mx-4">
-                <label class="mb-3" for="newCommentBox">
-                  <h4>Haz un comentario:</h4>
-                </label>
-                <textarea id="newCommentText" class="form-control" placeholder="Escribe aquí" id="newCommentBox"
-                  style="height: 100px" required></textarea>
-              </div>
+                <div class="row my-3">
+                  <div class="col-4 col-lg-2 mx-4">
+                    <label for="newCommentUsername"><span>Nombre de usuario: </span></label>
+                    <input class="form-control" id="newCommentUsername" style="width: 150px" type="text" required>
+                  </div>
+                </div>
+
+                <div class="row my-3">
+                  <div class="col-4 mx-4">
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                  </div>
+                </div>
+              </form>
+
             </div>
-
-            <div class="row my-3">
-              <div class="col-4 mx-4">
-                <label for="floatingSelect"><span>Elije la puntuación </span></label>
-                <select class="form-select" id="newCommentScore">
-                  <option selected value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="row my-3">
-              <div class="col-4 col-lg-2 mx-4">
-                <label for="newCommentUsername"><span>Nombre de usuario: </span></label>
-                <input class="form-control" id="newCommentUsername" type="text" required>
-              </div>
-            </div>
-
-            <div class="row my-3">
-              <div class="col-4 mx-4">
-                <input type="submit" value="Enviar" class="btn btn-primary">
-              </div>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
+      </section>
+      <div class="container-md ">
+        <h3 class="mt-4 mt-md-2 mb-4">Productos relacionados:</h3>
+        <section class="border border-3 border-light mt-4">
 
-      <div id="related-products-holder" class="container-lg my-5 ">
-        <div class="list-group-item list-group-item-action">
-          <h4 class="my-4">Productos relacionados:</h4>
-          <div id="related-products-container" class="row"></div>
-        </div>
+          <div id="related-products-holder" class="">
+            <div id="related-products-container" class="row">
+
+            </div>
+          </div>
+        </section>
       </div>
   </main>
   <footer class="text-muted">
@@ -169,10 +232,10 @@
   </div>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="jquery-3.6.0.min.js"></script>
   <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

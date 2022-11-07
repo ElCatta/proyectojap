@@ -8,7 +8,9 @@ const PRODUCT_INFO_COMMENTS_URL =
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
 const userField = document.getElementById("userFieldDropdown");
+
 
 function dateAndHour() {
   var currentdate = new Date();
