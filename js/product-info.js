@@ -17,7 +17,7 @@ const thumbnailContainer = document.getElementById("thumbnail-container")
 const thumbnail = document.getElementById("image-thumbnail")
 let product,
   comments = "";
-    
+
 
 // PRINT PRODUCT INFO
 
@@ -43,7 +43,7 @@ function printImages() {
     document.getElementById("images-row").innerHTML += `
     <div class="row pb-1">
             <div class="text-center pe-2 pe-md-4 pe-lg-2">
-              <img src="${image}" style="width:80px; cursor:pointer;" id="imageRow${i}"  onclick="changeThumbnail(${i})" class="img-fluid float-md-end p-0" alt="">
+              <img src="${image}" style="width:80px; cursor:pointer;" id="imageRow${i}"  onclick="changeThumbnail(${i})" class="img-fluid float-end p-0" alt="">
             </div>
           </div>
     `
@@ -61,7 +61,7 @@ async function changeThumbnail(index) {
 
 // IMG ZOOM
 
-thumbnailContainer.addEventListener("mousemove",(e) => {
+thumbnailContainer.addEventListener("mousemove", (e) => {
   const x = e.clientX - e.target.offsetLeft;
   const y = e.clientY - e.target.offsetTop;
   thumbnail.style.transformOrigin = `${x}px ${y}px`;
@@ -69,8 +69,8 @@ thumbnailContainer.addEventListener("mousemove",(e) => {
   thumbnail.style.cursor = "zoom-in"
 })
 
-thumbnailContainer.addEventListener("mouseleave",()=> {
-  thumbnail.style.transformOrigin= "center";
+thumbnailContainer.addEventListener("mouseleave", () => {
+  thumbnail.style.transformOrigin = "center";
   thumbnail.style.transform = "scale(1)"
 })
 
@@ -138,7 +138,7 @@ function newComment() {
               <span>${document.getElementById("newCommentUsername").value}</span>
             </div>
             <div class="col text-end me-2 text-muted">
-              <span>"Hace un momento"</span>
+              <span>Hace un momento</span>
             </div>
           </div>
           <div class="row mt-2">
@@ -166,19 +166,13 @@ function showRelatedProducts() {
   for (let i = 0; i < 4; i++) {
     if (relatedProducts[i].id != localStorage.getItem("productId")) {
       relatedProductsContainer.innerHTML +=
-        `
-                <div class="card col-md-4 col-4 popout p-0" onclick="loadProductInfo(${relatedProducts[i].id})">
-                <img class="card-img-top" src="` +
-        relatedProducts[i].image +
-        `" alt="` +
-        relatedProducts[i].name +
-        `">
-                    <div class="card-body">
-                    <h4 class="card-title text-center">` +
-        relatedProducts[i].name +
-        `</h4>  
-                    </div>
-                </div>`;
+        ` 
+        <div style="cursor:pointer;" class="card col-md-4 col-4 popout p-0" onclick="loadProductInfo(${relatedProducts[i].id})">
+          <img class="card-img-top" src="${relatedProducts[i].image}" alt="${relatedProducts[i].name}">
+          <div class="card-body">
+            <h4 class="card-title text-center">${relatedProducts[i].name} </h4>  
+          </div>
+       </div>`;
     }
   }
 }
