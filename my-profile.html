@@ -53,7 +53,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-  
+
               <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
               </li>
               <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
@@ -67,12 +67,61 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row px-5">
+        <div class="col-10">
+          <h1 class="mt-5 mb-2">Perfil</h1>
+        </div>
+        <div class="col-2">
+          <img src="img/img_perfil.png" style="width: 100px;" class="img-thumbnail float-end mt-5 mb-2" alt="">
+        </div>
       </div>
-    </div>
+
+      <section class="px-5">
+        <hr class="mt-2">
+        <form action="">
+          <div class="row my-3">
+            <div class="col">
+              <label for="profile-firstname">Primer nombre:</label>
+              <input type="text" id="profile-firstname" class="form-control" minlength="3" required>
+            </div>
+            <div class="col">
+              <label for="profile-secondname">Segundo nombre:</label>
+              <input type="text" id="profile-secondname" class="form-control" minlength="3" required>
+            </div>
+          </div>
+          <div class="row my-3 ">
+            <div class="col">
+              <label for="profile-firstsurname">Primer apellido:</label>
+              <input type="text" id="profile-firstsurname" class="form-control" minlength="3" required>
+            </div>
+            <div class="col">
+              <label for="profile-secondsurname">Segundo apellido:</label>
+              <input type="text" id="profile-secondsurname" class="form-control" minlength="3" required>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col">
+              <label for="profile-email">Email:</label>
+              <input type="email" id="profile-email" class="form-control" required>
+            </div>
+            <div class="col">
+              <label for="profile-email">Imagen de perfil:</label>
+              <input type="file" id="profile-picture" class="form-control" required>
+            </div>
+          </div>
+          <div class="row my-3 mb-5">
+            <div class="col-6 mb-5">
+              <label for="profile-phonenumber">Teléfono de contacto:</label>
+              <input type="text" id="profile-phonenumber" class="form-control" minlength="8" required>
+            </div>
+
+          </div>
+          <hr class="mt-5">
+          <button type="submit" class="btn btn-primary"> Guardar cambios</button>
+        </form>
+      </section>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted pb-0">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
