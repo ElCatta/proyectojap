@@ -61,19 +61,35 @@ async function changeThumbnail(index) {
 
 // IMG ZOOM
 
-thumbnailContainer.addEventListener("mousemove", (e) => {
+function desktopZoomStart(e) {
   const x = e.clientX - e.target.offsetLeft;
   const y = e.clientY - e.target.offsetTop;
   thumbnail.style.transformOrigin = `${x}px ${y}px`;
   thumbnail.style.transform = "scale(2)"
   thumbnail.style.cursor = "zoom-in"
-})
-
-thumbnailContainer.addEventListener("mouseleave", () => {
+}
+function desktopZoomStop(e) {
   thumbnail.style.transformOrigin = "center";
   thumbnail.style.transform = "scale(1)"
-})
+}
 
+function mobileZoomStart(e) {
+  x = e.touches[0].clientX - e.target.offsetLeft;
+  y = e.touches[0].clientY - e.target.offsetTop;
+  thumbnail.style.transformOrigin = `${x}px ${y}px`;
+  thumbnail.style.transform = "scale(2)"
+}
+function mobileZoomStop(e) {
+  thumbnail.style.transformOrigin = "center";
+  thumbnail.style.transform = "scale(1)"
+}
+
+thumbnailContainer.addEventListener("mousemove", desktopZoomStart)
+thumbnailContainer.addEventListener("mouseleave", desktopZoomStop)
+
+thumbnailContainer.addEventListener("touchstart", mobileZoomStart)
+thumbnailContainer.addEventListener("touchmove", mobileZoomStart)
+thumbnailContainer.addEventListener("touchend", mobileZoomStop)
 
 // PRODUCT RATING
 
