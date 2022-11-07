@@ -12,18 +12,14 @@ const commentsContainer = document.getElementById("product-comments-container");
 const relatedProductsContainer = document.getElementById(
   "related-products-container"
 );
-const imagesCarousel = document.getElementById("imagesCarousel");
+const thumbnailContainer = document.getElementById("thumbnail-container")
+
+const thumbnail = document.getElementById("image-thumbnail")
 let product,
   comments = "";
     
 
-// SELECT PRODUCT COUNT
-async function productCount() {
-  for (let i = 0; i < document.getElementById("inputCount").value; i++) {
-    await addToProductsCart(product.id);
-    productAddAlert(document.getElementById("inputCount").value);
-  }
-}
+
 
 // PRINT PRODUCT INFO
 
@@ -41,7 +37,7 @@ function showProductInfo() {
   document.getElementById("altProductDesc").innerText = product.description
 }
 
-// PRODUCT IMAGES
+// PRINT PRODUCT IMAGES
 
 function printImages() {
   for (let i = 0; i < product.images.length; i++) {
@@ -55,16 +51,33 @@ function printImages() {
     `
 
   }
-  document.getElementById("image-thumbnail").src = product.images[0]
+  thumbnail.src = product.images[0]
 }
+
+// CHANGE THUMBNAIL
 
 async function changeThumbnail(index) {
   let newThumbnail = await document.getElementById("imageRow" + index).src
-  document.getElementById("image-thumbnail").src = newThumbnail
+  thumbnail.src = newThumbnail
 }
 
+// IMG ZOOM
 
-// PRODUCT COMMENTS
+thumbnailContainer.addEventListener("mousemove",(e) => {
+  const x = e.clientX - e.target.offsetLeft;
+  const y = e.clientY - e.target.offsetTop;
+  thumbnail.style.transformOrigin = `${x}px ${y}px`;
+  thumbnail.style.transform = "scale(2)"
+  thumbnail.style.cursor = "zoom-in"
+})
+
+thumbnailContainer.addEventListener("mouseleave",()=> {
+  thumbnail.style.transformOrigin= "center";
+  thumbnail.style.transform = "scale(1)"
+})
+
+
+// PRODUCT RATING
 
 function commentRating(commentScore) {
   let rating = "";
@@ -78,6 +91,9 @@ function commentRating(commentScore) {
   return rating;
 }
 
+
+
+// SHOW COMMENTS
 function showProductComments() {
 
   for (let i = 0; i < comments.length; i++) {
@@ -109,8 +125,9 @@ function showProductComments() {
   }
 }
 
-function newComment() {
+// NEW COMMENT 
 
+function newComment() {
   commentsContainer.innerHTML +=
 
     `<div class="row">
@@ -134,6 +151,16 @@ function newComment() {
         </div>
       </div>`
 }
+
+
+// SELECT PRODUCT COUNT
+async function productCount() {
+  for (let i = 0; i < document.getElementById("inputCount").value; i++) {
+    await addToProductsCart(product.id);
+    productAddAlert(document.getElementById("inputCount").value);
+  }
+}
+
 
 // RELATED PRODUCTS
 
