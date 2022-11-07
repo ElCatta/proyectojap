@@ -19,8 +19,6 @@ let product,
   comments = "";
     
 
-
-
 // PRINT PRODUCT INFO
 
 function showProductInfo() {

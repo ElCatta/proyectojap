@@ -1,77 +1,61 @@
 let PRODUCTS_API = PRODUCTS_URL + localStorage.getItem("catID") + ".json"
-let productList = ""
-
+let filteredProducts, productList = ""
 let rangeMin = document.getElementById("rangeMin");
 let rangeMax = document.getElementById("rangeMax");
-let searchBar = document.getElementById('browseBar');
-
+let searchBar = document.getElementById("browseBar");
 
 // SORTING FUNCTIONALITIES
 
-function sortByPriceDesc(a, b) {
-    return a.cost - b.cost
-}
-
-function sortByPriceAsc(a, b) {
-    return b.cost - a.cost
-}
-
-function sortByRel(a, b) {
-    return b.soldCount - a.soldCount
-}
-
 function productSortMore() {
-    showProducts(productList.sort(sortByPriceDesc));
+  showProducts(filteredProducts.sort((a, b) => a.cost - b.cost));
 }
 
 function productSortLess() {
-    showProducts(productList.sort(sortByPriceAsc));
+  showProducts(filteredProducts.sort((a, b) => b.cost - a.cost));
 }
 
 function productSortRel() {
-    showProducts(productList.sort(sortByRel));
+  showProducts(filteredProducts.sort((a, b) => b.soldCount - a.soldCount));
 }
 
 function productsClean() {
-    showProducts(productList);
-    document.getElementById("rangeMin").value = ""
-    document.getElementById("rangeMax").value = "";
+  showProducts(productList);
+  document.getElementById("rangeMin").value = "";
+  document.getElementById("rangeMax").value = "";
+  searchBar.value = "";
+  filteredProducts = productList;
 }
 
 // SEARCH AND FILTER
 
 function searchAndFilter() {
-    let filteredProducts = productList;
-    if (rangeMin.value != "") {
-        filteredProducts = filteredProducts.filter(product =>
-            product.cost > rangeMin.value)
-    };
-    if (rangeMax.value != "") {
-        filteredProducts = filteredProducts.filter(product =>
-            product.cost < rangeMax.value)
-    };
-    if (searchBar.value != "") {
-        filteredProducts = filteredProducts.filter(product =>
-            product.name.toLowerCase().includes(searchBar.value.toLowerCase()) ||
-            product.description.toLowerCase().includes(searchBar.value.toLowerCase()))
-    }
-    showProducts(filteredProducts)
+  filteredProducts = productList.filter(
+    (product) =>
+      (rangeMin.value == "" || product.cost > rangeMin.value) &&
+      (rangeMax.value == "" || product.cost < rangeMax.value) &&
+      (searchBar.value == "" ||
+        product.name.toLowerCase().includes(searchBar.value.toLowerCase()) ||
+        product.description
+          .toLowerCase()
+          .includes(searchBar.value.toLowerCase()))
+  );
+  showProducts(filteredProducts);
 }
-
 
 // SHOW CURRENT CATEGORY TEXT
 
 function catText() {
-    document.getElementById("catName").innerText = catNames[localStorage.getItem("catID")]
+  document.getElementById("catName").innerText =
+    catNames[localStorage.getItem("catID")];
 }
 
 // PRODUCTS PRINTER
 
 function showProducts(list) {
-    let htmlContentToAppend = "";
-    for (let i = 0; i < list.length; i++) {
-        let product = list[i]
-        htmlContentToAppend += `
+  let htmlContentToAppend = "";
+  for (let i = 0; i < list.length; i++) {
+    let product = list[i];
+    htmlContentToAppend += `
             <div class="shadow border-light col-12 col-md-6 rounded mt-1 mb-4 mb-md-2 px-1 p-lg-3" style="cursor: pointer;">
                 <div class="row" onclick="loadProductInfo(${product.id})">
                     <div class="col-12 mb-2">
@@ -87,32 +71,29 @@ function showProducts(list) {
                         <small style="word-wrap: break-word" class="text-muted">${product.soldCount} vendidos</small>     
                     </div>
                     <div class="col-12 mt-2">
-                        
-                        <p> ${product.description}</p> 
-                                
+                        <p> ${product.description}</p>  
                     </div>
                 </div>
                 <div class="col-12">              
-                    <button type="button" onclick="addToProductsCart(${product.id}); productAddAlert(1);" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
+                    <button type="button" onclick="addToProductsCart(${product.id});" class="btn btn-warning btn-sm d-none d-md-block"><h6>Añadir 1 al carrito <i class="fa fa-cart-plus" aria-hidden="true"></i></h6></button>  
                 </div>
             </div>
-            `
-    }
-    document.getElementById("container-product-list").innerHTML = htmlContentToAppend;
-    catText();
+            `;
+  }
+  document.getElementById("container-product-list").innerHTML =
+    htmlContentToAppend;
+  catText();
 }
-
 
 // PRODUCTS FETCH
 
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCTS_API).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            productList = resultObj.data.products;
-            showProducts(productList);
-        }
-    });
+  getJSONData(PRODUCTS_API).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      productList = resultObj.data.products;
+      showProducts(productList);
+    }
+  });
 });
 
-
-document.getElementById('browseBar').addEventListener('input', searchAndFilter);
+document.getElementById("browseBar").addEventListener("input", searchAndFilter);

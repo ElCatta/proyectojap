@@ -113,44 +113,33 @@ function costUpdate() {
   totalCostCalc()
 }
 
+
 function subtotalCalc() {
-  subtotalCost = 0
+  subtotalCost = 0;
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
   for (let i = 0; i < productsCart.length; i++) {
     let product = productsCart[i];
-    if (product.currency != "USD") {
-      subtotalCost += Math.round((product.unitCost * product.count) / 42.3)
-    } else {
-      subtotalCost += product.unitCost * product.count;
-    }
+    subtotalCost += (product.currency != "USD" ? 
+    Math.round((product.unitCost * product.count) / 42.3) : 
+    product.unitCost * product.count);
   }
-  document.getElementById("subtotalCost").innerText = "USD " + "$" + subtotalCost
+  document.getElementById("subtotalCost").innerText = "USD " + "$" + subtotalCost;
 }
 
 function deliveryCostCalc() {
-  deliveryCost = 0;
-  let selectedMethodValue = document.querySelector('input[name="delivery"]:checked').value;
-  deliveryCost = Math.round(subtotalCost * selectedMethodValue);
-  document.getElementById("deliveryCost").innerText = "USD " + "$" + deliveryCost;
-
+  deliveryCost = Math.round(subtotalCost * document.querySelector('input[name="delivery"]:checked').value)
 }
 
 function totalCostCalc() {
-  totalcost = subtotalCost + deliveryCost;
-  document.getElementById("totalCost").innerText = "USD " + "$" + totalcost;
+  document.getElementById("totalCost").innerText = "USD " + "$" + (subtotalCost + deliveryCost)
 }
 
 // MANAGE PRODUCTS
 
 function removeProductFromCart(id) {
-  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
-  productsCart = productsCart.filter(product => product.id != id)
-  localStorage.setItem("productsCart", JSON.stringify(productsCart));
-  if (productsCart.length != 0) {
-    showCartProducts()
-  } else {
-    emptyCartAlert()
-  }
+  let productsCart = JSON.parse(localStorage.getItem("productsCart")).filter(product => product.id != id)
+  localStorage.setItem("productsCart", JSON.stringify(productsCart))
+  if (productsCart.length != 0) { showCartProducts() } else { emptyCartAlert() }
   cartBadge()
 }
 
@@ -159,16 +148,14 @@ function changeProductCount(id) {
   let count = document.getElementById("product" + id + "Count").value;
   let subtotalField = document.getElementById("product" + id + "Subtotal");
   let productsCart = JSON.parse(localStorage.getItem("productsCart"));
+  let product = productsCart.find((item) => item.id == id);
 
-  productsCart.find((product) => product.id == id).count = count;
-  subtotalField.innerText =
-    productsCart.find((product) => product.id == id).unitCost *
-    productsCart.find((product) => product.id == id).count;
+  product.count = parseInt(count) ;
+  subtotalField.innerText = product.unitCost * product.count;
 
   localStorage.setItem("productsCart", JSON.stringify(productsCart));
   costUpdate();
 }
-
 
 // PRINT CART
 
@@ -226,13 +213,10 @@ function emptyCartAlert() {
 // LOAD CART
 
 window.onload = function initCart() {
-  let productsCart = JSON.parse(localStorage.getItem("productsCart"));
-  if (productsCart.length == 0) {
-    emptyCartAlert();
-  } else {
-    showCartProducts()
-  }
-};
+  let productsCart = JSON.parse(localStorage.getItem("productsCart")) || []
+  productsCart.length == 0 ? emptyCartAlert() : showCartProducts()
+}
+
 
 
 // DELIVERY METHOD SELECTION EVENT
