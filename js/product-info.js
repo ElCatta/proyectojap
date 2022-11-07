@@ -27,7 +27,7 @@ function showProductInfo() {
     <h3 class="py-2">${product.name}</h3>
     <h2 class="pb-3 fw-bold">${product.currency} $${product.cost}</h2>
     <input type="number" style="width:40px;" value="1" name="" min="1" id="inputCount">
-    <button type="button"  class="btn p-2" id="addToCartBtn"> Añadir al carrito</button>
+    <button type="button"  class="btn btn-warning p-2" id="addToCartBtn"> Añadir al carrito</button>
     <h3 class="pt-3 pb-1 d-md-none d-lg-block">Detalles del producto</h3>
     <p class="d-md-none d-lg-block">${product.description}</p>
  `;
@@ -111,9 +111,7 @@ function commentRating(commentScore) {
 function showProductComments() {
 
   for (let i = 0; i < comments.length; i++) {
-    console.log("comment")
     commentsContainer.innerHTML +=
-
       `<div class="row">
           <div class="col px-4 pt-4 pb-2 shadow">
             <div class="row">
@@ -171,7 +169,6 @@ function newComment() {
 async function productCount() {
   for (let i = 0; i < document.getElementById("inputCount").value; i++) {
     await addToProductsCart(product.id);
-    productAddAlert(document.getElementById("inputCount").value);
   }
 }
 
