@@ -6,8 +6,7 @@ const creditCardNumber = document.getElementById("creditCardNumber");
 const securityCode = document.getElementById("securityCode");
 const creditCardExp = document.getElementById("creditCardExp");
 const bankAccountNumber = document.getElementById("bankAccountNumber")
-
-let subtotalCost = 0;
+let subtotalCost, deliveryCost = 0;
 let cartProducts = "";
 
 
@@ -123,15 +122,16 @@ function subtotalCalc() {
     Math.round((product.unitCost * product.count) / 42.3) : 
     product.unitCost * product.count);
   }
-  document.getElementById("subtotalCost").innerText = "USD " + "$" + subtotalCost;
+  document.getElementById("subtotalCost").innerText = "USD $" + subtotalCost;
 }
 
 function deliveryCostCalc() {
   deliveryCost = Math.round(subtotalCost * document.querySelector('input[name="delivery"]:checked').value)
+  document.getElementById("deliveryCost").innerText = "USD $" + deliveryCost
 }
 
 function totalCostCalc() {
-  document.getElementById("totalCost").innerText = "USD " + "$" + (subtotalCost + deliveryCost)
+  document.getElementById("totalCost").innerText = "USD $" + (subtotalCost + deliveryCost)
 }
 
 // MANAGE PRODUCTS
@@ -167,11 +167,10 @@ async function showCartProducts() {
 
     CART_CONTAINER.innerHTML += `
         <tr class="py-5 align-middle">
-            <td scope="row" class="p-1 "><img class="ms-1" src="${product.image
-      }" onclick="loadProductInfo(${product.id
-      })" style="width:90px;cursor: pointer;"></td>
-            <td onclick="loadProductInfo(${product.idfF
-      })" style="cursor: pointer;">${product.name}</td>
+            <td scope="row" class="p-1 ">
+            <img class="ms-1" src="${product.image
+      }" onclick="loadProductInfo(${product.id})" style="width:90px;cursor: pointer;"></td>
+            <td onclick="loadProductInfo(${product.id})" style="cursor: pointer;">${product.name}</td>
             <td>${product.currency + " " + product.unitCost}</td>
             <td>
             <input type="number" min="1" id="product${product.id
