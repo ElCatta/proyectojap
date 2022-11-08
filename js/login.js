@@ -2,7 +2,11 @@
 
 
 function loginSuccess() {
-    let userId = document.getElementById("floatingInput").value;
-    userId = userId.substring(0, userId.indexOf('@'));
+    let email = document.getElementById("floatingInput").value;
+    if (localStorage.getItem("profileInfo") == undefined) {
+        let profileInfo = {"email" : email}
+        localStorage.setItem("profileInfo", JSON.stringify(profileInfo))
+    }
+    userId = email.substring(0, email.indexOf('@'));
     localStorage.setItem("userId", userId)
 }

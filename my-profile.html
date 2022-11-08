@@ -52,7 +52,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userprofile-FieldDropdown">
 
               <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
               </li>
@@ -72,52 +72,56 @@
           <h1 class="mt-5 mb-2">Perfil</h1>
         </div>
         <div class="col-2">
-          <img src="img/img_perfil.png" style="width: 100px;" class="img-thumbnail float-end mt-5 mb-2" alt="">
+          <img src="img/img_perfil.png" id="profilePictureElement" style="width: 100px;" class="img-thumbnail float-end mt-5 mb-2" alt="">
         </div>
       </div>
 
       <section class="px-5">
         <hr class="mt-2">
-        <form action="">
+        <form id="profileForm" class="needs-validation" novalidate>
           <div class="row my-3">
             <div class="col">
-              <label for="profile-firstname">Primer nombre:</label>
-              <input type="text" id="profile-firstname" class="form-control" minlength="3" required>
+              <label for="firstname">Primer nombre*</label>
+              <input type="text" id="firstname" class="profile-field form-control" minlength="3" required>
+              <div class="invalid-feedback">
+                <span>Debes ingresar un primer nombre
+                </span>
+              </div>
             </div>
             <div class="col">
-              <label for="profile-secondname">Segundo nombre:</label>
-              <input type="text" id="profile-secondname" class="form-control" minlength="3" required>
+              <label for="secondname">Segundo nombre</label>
+              <input type="text" id="secondname" class="profile-field form-control" minlength="3">
             </div>
           </div>
           <div class="row my-3 ">
             <div class="col">
-              <label for="profile-firstsurname">Primer apellido:</label>
-              <input type="text" id="profile-firstsurname" class="form-control" minlength="3" required>
+              <label for="firstsurname">Primer apellido*</label>
+              <input type="text" id="firstsurname" class="profile-field form-control" minlength="3" required>
             </div>
             <div class="col">
-              <label for="profile-secondsurname">Segundo apellido:</label>
-              <input type="text" id="profile-secondsurname" class="form-control" minlength="3" required>
+              <label for="secondsurname">Segundo apellido</label>
+              <input type="text" id="secondsurname" class="profile-field form-control" minlength="3">
             </div>
           </div>
           <div class="row my-3">
             <div class="col">
-              <label for="profile-email">Email:</label>
-              <input type="email" id="profile-email" class="form-control" required>
+              <label for="email">Email*</label>
+              <input type="email" id="email" class="profile-field form-control" required>
             </div>
             <div class="col">
-              <label for="profile-email">Imagen de perfil:</label>
-              <input type="file" id="profile-picture" class="form-control" required>
+              <label for="email">Imagen de perfil</label>
+              <input type="file" id="picture" class=" form-control" >
             </div>
           </div>
           <div class="row my-3 mb-5">
             <div class="col-6 mb-5">
-              <label for="profile-phonenumber">Teléfono de contacto:</label>
-              <input type="text" id="profile-phonenumber" class="form-control" minlength="8" required>
+              <label for="phonenumber">Teléfono de contacto</label>
+              <input type="text" id="phonenumber" class="profile-field form-control" minlength="8">
             </div>
 
           </div>
           <hr class="mt-5">
-          <button type="submit" class="btn btn-primary"> Guardar cambios</button>
+        <button class="btn btn-primary" onclick="profileSubmit()" type="submit">Submit form</button>  
         </form>
       </section>
   </main>
