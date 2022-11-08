@@ -6,7 +6,6 @@ const PRODUCT_COMMENTS =
   "https://japceibal.github.io/emercado-api/products_comments/" +
   localStorage.getItem("productId") +
   ".json";
-const RELATED_PRODUCTS = PRODUCTS_URL + localStorage.getItem("catID") + ".json";
 const infoContainer = document.getElementById("product-info-container");
 const commentsContainer = document.getElementById("product-comments-container");
 const relatedProductsContainer = document.getElementById(
@@ -164,8 +163,8 @@ function newComment() {
       </div>`
 }
 
-
 // SELECT PRODUCT COUNT
+
 async function productCount() {
   for (let i = 0; i < document.getElementById("inputCount").value; i++) {
     await addToProductsCart(product.id);
@@ -176,17 +175,15 @@ async function productCount() {
 // RELATED PRODUCTS
 
 function showRelatedProducts() {
-  for (let i = 0; i < 4; i++) {
-    if (relatedProducts[i].id != localStorage.getItem("productId")) {
-      relatedProductsContainer.innerHTML +=
-        ` 
-        <div style="cursor:pointer;" class="card col-md-4 col-4 popout p-0" onclick="loadProductInfo(${relatedProducts[i].id})">
-          <img class="card-img-top" src="${relatedProducts[i].image}" alt="${relatedProducts[i].name}">
+  for (let i = 0; i < product.relatedProducts.length; i++) {
+    let relatedProduct = product.relatedProducts[i]
+    relatedProductsContainer.innerHTML += ` 
+        <div style="cursor:pointer;" class="card col-md-4 col-4 popout p-0" onclick="loadProductInfo(${relatedProduct.id})">
+          <img class="card-img-top" src="${relatedProduct.image}" alt="${relatedProduct.name}">
           <div class="card-body">
-            <h4 class="card-title text-center">${relatedProducts[i].name} </h4>  
+            <h4 class="card-title text-center">${relatedProduct.name} </h4>  
           </div>
        </div>`;
-    }
   }
 }
 
@@ -198,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       product = resultObj.data;
       showProductInfo();
       printImages()
+      showRelatedProducts();
 
       document
         .getElementById("addToCartBtn")
@@ -212,14 +210,4 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }
   });
 
-  getJSONData(RELATED_PRODUCTS).then(function (resultObj) {
-    if (resultObj.status === "ok") {
-      relatedProducts = resultObj.data.products;
-      if (relatedProducts.length > 2) {
-        showRelatedProducts();
-      } else {
-        document.getElementById("related-products-holder").innerHTML = "";
-      }
-    }
-  });
 });
