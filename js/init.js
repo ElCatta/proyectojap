@@ -97,6 +97,14 @@ function loadProductInfo(id) {
   window.location = "product-info.html";
 }
 
+// LOAD PICTURE IN NAVBAR
+function loadProfilePicture() {
+  let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
+  profileInfo.picture == undefined ? null : document.getElementById("navbarPicture").src = profileInfo.picture
+}
+
+window.onload = loadProfilePicture()
+
 // CART
 
 async function addToProductsCart(id) {
@@ -138,6 +146,7 @@ function purgeCart() {
 }
 
 window.onload = cartBadge();
+
 
 // MY PURCHASES
 

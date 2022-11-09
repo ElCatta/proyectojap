@@ -250,10 +250,10 @@ a.custom-card:hover {
 
 .navbar{
   background-color: #06121E;
-  height: 60px;
+
 }
 
 .navbar img{
-  width: 215px;
+  width: 200px;
   padding-top: 3px;
-}
+} 

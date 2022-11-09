@@ -14,18 +14,15 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark p-1">
     <div class="container">
+      <a class="navbar-brand pb-2" href="home.html">
+        <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item align-middle">
-            <img src="img/emercado.pngs.png" id="nav-bra alt="">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="home.html">Inicio</a>
-          </li>
+      <div class="collapse navbar-collapse ms-5" id="navbarNav">
+        <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
@@ -34,41 +31,39 @@
           </li>
           <li class="nav-item"><a class="nav-link" href="cart.html">Mi carrito <span id="cartBadge"
                 class="badge rounded-pill bg-danger"></span></a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false"></a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-              
-              <li><a class="dropdown-item" href="my-purchases.html"  title="Mis compras">Mis compras</a>
-              </li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
-              </li>
-            </ul>
+          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Mis compras">Mis compras</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link p-0" href="my-profile.html">
+              <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
+              <span id="userFieldDropdown"></span>
+            </a> 
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+    <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="5000">
+        <div class="carousel-item active" data-bs-interval="4500">
           <img src="img/cover_back.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="5000">
-          <img src="img/cover_back2.png" class="d-block w-100" alt="..." >
+        <div class="carousel-item" data-bs-interval="4500">
+          <img src="img/cover_back2.png" class="d-block w-100" alt="...">
         </div>
-        <div class="carousel-item" data-bs-interval="5000">
+        <div class="carousel-item" data-bs-interval="4500">
           <img src="img/cover_back3.png" class="d-block w-100" alt="...">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -76,7 +71,7 @@
     </div>
 
 
-    <div class="album py-5 bg-light">
+    <div class="album pt-2 py-md-5 bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
