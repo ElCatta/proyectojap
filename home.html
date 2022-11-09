@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark p-1" style="background-color: #06121E ;">
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item align-middle">
-            <img src="img/emercado.pngs.png" style="width:150px;" class="mt-2" alt="">
+            <img src="img/emercado.pngs.png" id="nav-bra alt="">
           </li>
           <li class="nav-item">
             <a class="nav-link" href="home.html">Inicio</a>
@@ -51,7 +51,31 @@
     </div>
   </nav>
   <main>
-    <div class="jumbotron text-center"></div>
+    
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="img/cover_back.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="img/cover_back2.png" class="d-block w-100" alt="..." >
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="img/cover_back3.png" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
+
+
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
