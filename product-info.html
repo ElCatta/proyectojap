@@ -53,19 +53,16 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark p-1">
-    <div class="container-md">
+    <div class="container">
+      <a class="navbar-brand pb-2" href="home.html">
+        <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item align-middle">
-            <img src="img/emercado.pngs.png" id="nav-brand" alt="">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="home.html">Inicio</a>
-          </li>
+      <div class="collapse navbar-collapse ms-5" id="navbarNav">
+        <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
@@ -74,17 +71,13 @@
           </li>
           <li class="nav-item"><a class="nav-link" href="cart.html">Mi carrito <span id="cartBadge"
                 class="badge rounded-pill bg-danger"></span></a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="userFieldDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false"></a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="userFieldDropdown">
-
-              <li><a class="dropdown-item" href="my-purchases.html" title="Mis compras">Mis compras</a>
-              </li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="index.html" onclick="logOut()" title="Cerrar sesión">Cerrar sesión</a>
-              </li>
-            </ul>
+          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Mis compras">Mis compras</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link p-0" href="my-profile.html">
+              <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
+              <span id="userFieldDropdown"></span>
+            </a>
           </li>
         </ul>
       </div>
