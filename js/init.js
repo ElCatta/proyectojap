@@ -86,8 +86,10 @@ if (window.addEventListener) {
 }
 
 function logOut() {
-  localStorage.setItem("userId", "");
-  window.location.replace("home.html");
+  if (confirm("Su información será eliminada, ¿está seguro?") == true) {
+    localStorage.clear()
+    window.location.replace("index.html");
+  } 
 }
 
 // PRODUCT INFO ID
@@ -98,12 +100,12 @@ function loadProductInfo(id) {
 }
 
 // LOAD PICTURE IN NAVBAR
-function loadProfilePicture() {
+function loadNavbarProfilePicture() {
   let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
   profileInfo.picture == undefined ? null : document.getElementById("navbarPicture").src = profileInfo.picture
 }
 
-window.onload = loadProfilePicture()
+window.onload = loadNavbarProfilePicture()
 
 // CART
 
