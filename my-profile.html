@@ -5,9 +5,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Lo que buscás</title>
+  <link rel="icon" href="img/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="icon" href="img/icon.ico" type="image/x-icon">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </symbol>
+  </svg>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -29,7 +38,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark p-1">
     <div class="container">
-      <a class="navbar-brand pb-2" href="home.html">
+      <a class="navbar-brand pb-2" title="Volver al inicio" href="home.html">
         <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -39,17 +48,18 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNav">
         <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link" title="Ver las categorías" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
+            <a class="nav-link" href="sell.html" title="Vender artículos">Vender</a>
           </li>
-          <li class="nav-item"><a class="nav-link" href="cart.html">Mi carrito <span id="cartBadge"
-                class="badge rounded-pill bg-danger"></span></a></li>
-          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Mis compras">Mis compras</a>
+          <li class="nav-item"><a class="nav-link" title="Acceder a mi carrito" href="cart.html">Mi carrito <span
+                id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
+          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Acceder a mis compras">Mis
+              compras</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link p-0" href="my-profile.html">
+          <li class="nav-item">
+            <a class="nav-link p-0" title="Ver mi perfil" href="my-profile.html">
               <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
               <span id="userFieldDropdown"></span>
             </a>
@@ -58,14 +68,15 @@
       </div>
     </div>
   </nav>
-  <main>
+  <main id="main">
     <div class="container">
       <div class="row px-5">
         <div class="col-10">
           <h1 class="mt-5 mb-2">Perfil</h1>
         </div>
         <div class="col-2">
-          <img src="img/img_perfil.png" id="profilePictureElement" style="width: 100px;" class="img-thumbnail float-end mt-5 mb-2" alt="">
+          <img src="img/img_perfil.png" id="profilePictureElement" style="width: 100px;"
+            class="img-thumbnail float-end mt-5 mb-2" alt="">
         </div>
       </div>
 
@@ -103,7 +114,7 @@
             </div>
             <div class="col">
               <label for="email">Imagen de perfil</label>
-              <input type="file" id="picture" class=" form-control" >
+              <input type="file" id="picture" class=" form-control">
             </div>
           </div>
           <div class="row my-3 mb-5">
@@ -114,7 +125,13 @@
 
           </div>
           <hr class="mt-5">
-        <button class="btn btn-primary" onclick="profileSubmit()" type="submit">Submit form</button>  
+          <div class="input-group gap-2">
+      
+              <button class="btn btn-primary" id="submit" onclick="profileSubmit()" type="submit">Guardar cambios</button>
+            
+              <button class="btn btn-danger" onclick="logOut()" type="button">Cerrar sesión</button>
+            </div>
+          </div>
         </form>
       </section>
   </main>
@@ -128,6 +145,7 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
