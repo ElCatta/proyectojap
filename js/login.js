@@ -1,5 +1,4 @@
-
-
+// LOGIN SUCCESS
 
 function loginSuccess() {
     let email = document.getElementById("floatingInput").value;
