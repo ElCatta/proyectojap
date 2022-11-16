@@ -27,37 +27,38 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark p-1">
-  <div class="container">
-    <a class="navbar-brand pb-2" title="Volver al inicio" href="home.html">
-      <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse ms-5" id="navbarNav">
-      <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
-        <li class="nav-item">
-          <a class="nav-link" title="Ver las categorías" href="categories.html">Categorías</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="sell.html" title="Vender artículos">Vender</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" title="Acceder a mi carrito" href="cart.html">Mi carrito <span
-              id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
-        <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Acceder a mis compras">Mis compras</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link p-0" title="Ver mi perfil" href="my-profile.html">
-            <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
-            <span id="userFieldDropdown"></span>
-          </a>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
+    <div class="container">
+      <a class="navbar-brand pb-2" title="Volver al inicio" href="home.html">
+        <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-5" id="navbarNav">
+        <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
+          <li class="nav-item">
+            <a class="nav-link" title="Ver las categorías" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html" title="Vender artículos">Vender</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" title="Acceder a mi carrito" href="cart.html">Mi carrito <span
+                id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
+          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Acceder a mis compras">Mis
+              compras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link p-0" title="Ver mi perfil" href="my-profile.html">
+              <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
+              <span id="userFieldDropdown"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
   <main id="main" class="pb-5 container-lg">
     <div id="alertId" class="alert alert-success alert-dismissible fade hide" role="alert">
       <strong>Holy guacamole!</strong> You should check in on some of those fields below.
@@ -90,13 +91,13 @@
         <div class="col-12 col-md-3 mb-2 ">
           <h5 class="align-middle text-center m-0 mt-1">Ordenar</h5>
         </div>
-        <div  class="col-12 col-md-9 btn-group btn-group-toggle " >
-          <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortMore()">
-          <label class="btn btn-dark" for="sortDesc">Más caro</label>
-          <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortLess()">
-          <label class="btn btn-dark" id="lessLabel" for="sortAsc">Más barato</label>
-          <input type="radio" class="btn-check" name="options" id="sortRel" onclick="productSortRel()">
-          <label class="btn btn-dark" id="relLabel" for="sortRel">Por relevancia</label>
+        <div class="col-12 col-md-9 btn-group">
+          <input type="radio" class="btn-check options" name="options" id="sortDesc" onclick="productSortMore()">
+          <label class="btn btn-outline-dark" for="sortDesc">Más caro</label>
+          <input type="radio" class="btn-check options" name="options" id="sortAsc" onclick="productSortLess()">
+          <label class="btn btn-outline-dark" for="sortAsc">Más barato</label>
+          <input type="radio" class="btn-check options" name="options" id="sortRel" onclick="productSortRel()">
+          <label class="btn btn-outline-dark" for="sortRel">Por relevancia</label>
         </div>
       </div>
 
@@ -111,7 +112,7 @@
             <input class="form-control" type="number" placeholder=" máx." id="rangeMax">
           </div>
         </div>
-        <div class="col-12 col-md-5 btn-group mt-3 mb-md-1" >
+        <div class="col-12 col-md-5 btn-group mt-3 mb-md-1">
           <button class="btn btn-dark" onclick="searchAndFilter()" id="rangeFilterCost">Filtrar</button>
           <button class="btn btn-success" id="clearFilters" onclick="productsClean()">Limpiar</button>
         </div>
@@ -120,7 +121,7 @@
 
 
 
-  
+
     <div class="list container-lg list-group-item-action py-0">
       <div id="container-product-list" class="row mt-3 ">
       </div>
@@ -165,7 +166,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

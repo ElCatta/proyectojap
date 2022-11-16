@@ -6,11 +6,11 @@ let searchBar = document.getElementById("browseBar");
 
 // SORTING FUNCTIONALITIES
 
-function productSortMore() {
+function productSortLess() {
   showProducts(filteredProducts.sort((a, b) => a.cost - b.cost));
 }
 
-function productSortLess() {
+function productSortMore() {
   showProducts(filteredProducts.sort((a, b) => b.cost - a.cost));
 }
 
@@ -18,13 +18,6 @@ function productSortRel() {
   showProducts(filteredProducts.sort((a, b) => b.soldCount - a.soldCount));
 }
 
-function productsClean() {
-  showProducts(productList);
-  document.getElementById("rangeMin").value = "";
-  document.getElementById("rangeMax").value = "";
-  searchBar.value = "";
-  filteredProducts = productList;
-}
 
 // SEARCH AND FILTER
 
@@ -41,6 +34,27 @@ function searchAndFilter() {
   );
   showProducts(filteredProducts);
 }
+
+searchBar.addEventListener("input", () => {
+  searchBar.value != ""  ? searchAndFilter() : productsClean()
+});
+
+
+// REVERT OPTIONS
+
+function productsClean() {
+  showProducts(productList);
+  document.getElementById("rangeMin").value = "";
+  document.getElementById("rangeMax").value = "";
+  searchBar.value = "";
+  Array.from(document.getElementsByClassName("options")).forEach(input => {
+    input.checked = false
+  });
+
+  filteredProducts = productList;
+}
+
+
 
 // SHOW CURRENT CATEGORY TEXT
 
@@ -91,9 +105,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
   getJSONData(PRODUCTS_API).then(function (resultObj) {
     if (resultObj.status === "ok") {
       productList = resultObj.data.products;
+      filteredProducts = productList
       showProducts(productList);
     }
   });
 });
 
-document.getElementById("browseBar").addEventListener("input", searchAndFilter);
+
+
+
