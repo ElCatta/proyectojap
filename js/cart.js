@@ -168,14 +168,14 @@ async function showCartProducts() {
     CART_CONTAINER.innerHTML += `
         <tr class="py-5 align-middle">
             <td scope="row" class="p-1 ">
-            <img class="ms-1" src="${product.image
+            <img class="ms-1 img-fluid" src="${product.image
       }" onclick="loadProductInfo(${product.id})" style="width:90px;cursor: pointer;"></td>
             <td onclick="loadProductInfo(${product.id})" style="cursor: pointer;">${product.name}</td>
-            <td>${product.currency + " " + product.unitCost}</td>
+            <td class="d-none d-md-table-cell">${product.currency + " " + product.unitCost}</td>
             <td>
             <input type="number" min="1" id="product${product.id
       }Count" class="form-control" onchange="changeProductCount(${product.id
-      })" style="width:80px;" value="${product.count}" required>
+      })" style="width:60px;" value="${product.count}" required>
             </td>
             <td>${product.currency} $<span id="product${product.id}Subtotal">${product.unitCost * product.count
       }</span></td>
