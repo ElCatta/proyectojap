@@ -9,6 +9,8 @@
                     event.preventDefault()
                     event.stopPropagation()
                 }
+                event.preventDefault()
+                event.stopPropagation()
                 profileSubmit()
                 form.classList.add('was-validated')
             }, false)
@@ -22,7 +24,16 @@ const pictureInput = document.getElementById('picture');
 // SUBMIT PROFILE INFO
 
 function profileSubmit() {
+    console.log("Submiting profile...")
     if (profileForm.checkValidity()) {
+        if (localStorage.getItem("profileInfo") == null) {
+            let profileInfo = {}
+            for (let i = 0; i < fields.length; i++) {
+                const field = fields[i];
+                profileInfo[field.id] = field.value
+            }
+            localStorage.setItem("profileInfo", JSON.stringify(profileInfo))
+        }
         let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i];
@@ -50,24 +61,24 @@ pictureInput.addEventListener('change', () => {
 
 
 
-
-// LOAD PROFILE INFO
 function loadProfileInfo() {
     let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
-    for (let i = 0; i < fields.length; i++) {
-        const field = fields[i];
-        field.value = profileInfo[field.id] || null
+    if (profileInfo) {
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            field.value = profileInfo[field.id] || null
+        }
+        loadProfilePicture();
     }
-    loadProfilePicture()
 }
 
 // LOAD PROFILE PICTURE
 function loadProfilePicture() {
     let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
-    profileInfo.picture == undefined ? null : document.getElementById("profilePictureElement").src = profileInfo.picture
-    loadNavbarProfilePicture()
+    if (profileInfo && profileInfo.picture) {
+        document.getElementById("profilePictureElement").src = profileInfo.picture;
+    }
 }
-
 
 
 window.addEventListener("load", () => {

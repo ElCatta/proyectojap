@@ -9,120 +9,123 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
-  <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-  <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json">
-  <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-  <link rel="stylesheet" href="css/signin.css">
-  <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
-  <meta name="theme-color" content="#712cf9">
-
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
-
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
-
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
-
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
-
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .g-signin2 {
-      margin-top: 20px;
-      margin-left: 38%;
-    }
-  </style>
-  <link href="signin.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: rgb(248, 249, 250);
-    }
-  </style>
 </head>
 
-<body class="text-center">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
+    <div class="container-lg">
+      <a class="navbar-brand pb-2" title="Volver al inicio" href="index.html">
+        <img src="img/emercadobrand.png" style="cursor: pointer;" alt="" width="200" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-lg-5" id="navbarNav">
+        <ul class="navbar-nav w-100 align-content-center justify-content-between py-2">
+          <li class="nav-item">
+            <a class="nav-link" title="Ver las categorías" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html" title="Vender artículos">Vender</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" title="Acceder a mi carrito" href="cart.html">Mi carrito <span
+                id="cartBadge" class="badge rounded-pill bg-danger"></span></a></li>
+          <li class="nav-item"><a class="nav-link" href="my-purchases.html" title="Acceder a mis compras">Mis compras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link p-0" title="Ver mi perfil" href="my-profile.html">
+              Iniciar sesión
+              <img id="navbarPicture" class="mx-2 pb-2" src="img/img_perfil.png" style="width:30px;">
+              <span id="userFieldDropdown"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
 
-
-  <main class="form-signin w-100 m-auto">
-    <form action="home.html" onsubmit="loginSuccess()">
-      <div class="row">
-        <div class="col">
-          <img class="mb-4 img-fluid" src="img/login.png" alt="">
+    <div id="carouselExampleControls" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="4500">
+          <img src="img/cover_back.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4500">
+          <img src="img/cover_back2.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item" data-bs-interval="4500">
+          <img src="img/cover_back3.png" class="d-block w-100" alt="...">
         </div>
       </div>
-      <h1 class="h3 mb-3 fw-normal">Inicio de sesión</h1>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    </div>
 
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required
-          autocomplete>
-        <label for="floatingInput">Correo electrónico</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required autocomplete>
-        <label for="floatingPassword">Contraseña</label>
-      </div>
 
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recordar inicio de sesión
-        </label>
+    <div class="album pt-2 py-md-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" onclick="setCatID(101)" id="autos">
+              <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
+                alt="Imgagen representativa de la categoría 'Autos'">
+              <h3 class="m-3">Autos</h3>
+              <div class="card-body">
+                <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" onclick="setCatID(102)" id="juguetes">
+              <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
+                alt="Imgagen representativa de la categoría 'Juguetes'">
+              <h3 class="m-3">Juguetes</h3>
+              <div class="card-body">
+                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm custom-card cursor-active" onclick="setCatID(103)" id="muebles">
+              <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
+                alt="Imgagen representativa de la categoría 'Muebles'">
+              <h3 class="m-3">Muebles</h3>
+              <div class="card-body">
+                <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+        </div>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    </form>
-    <div class="g_id_signin" data-type="standard"></div>
+    </div>
   </main>
-
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+        2022</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/init.js"></script>
+  <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
 </body>
-<script src="js/login.js"></script>
-
 
 </html>

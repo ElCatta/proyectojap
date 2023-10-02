@@ -8,7 +8,17 @@ const PRODUCT_INFO_COMMENTS_URL =
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-let catNames = { 101: "Autos", 102: "Juguetes", 103: "Muebles", 104: "Herramientas", 105: "Computadoras", 106: "Vestimenta", 107: "Electrodomésticos", 108: "Deporte", 109: "Celulares" };
+let catNames = {
+  101: "Autos",
+  102: "Juguetes",
+  103: "Muebles",
+  104: "Herramientas",
+  105: "Computadoras",
+  106: "Vestimenta",
+  107: "Electrodomésticos",
+  108: "Deporte",
+  109: "Celulares",
+};
 const userField = document.getElementById("userFieldDropdown");
 
 // SAVE DATE AND HOUR
@@ -43,7 +53,7 @@ if (localStorage.getItem("myPurchases") == undefined) {
   localStorage.setItem("myPurchases", "[]");
 }
 
-// LOADING SPINNER 
+// LOADING SPINNER
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -52,7 +62,6 @@ let showSpinner = function () {
 let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 };
-
 
 // USER PROFILE //
 
@@ -70,7 +79,7 @@ window.addEventListener("load", showUserId);
 
 function logOut() {
   if (confirm("Su información será eliminada, ¿está seguro?") == true) {
-    localStorage.clear()
+    localStorage.clear();
     window.location.replace("index.html");
   }
 }
@@ -78,13 +87,14 @@ function logOut() {
 // LOAD PROFILE PICTURE ON NAVBAR
 
 function loadNavbarProfilePicture() {
-  let profileInfo = JSON.parse(localStorage.getItem("profileInfo"))
-  profileInfo.picture == undefined ? null : document.getElementById("navbarPicture").src = profileInfo.picture
+  let profileInfo = JSON.parse(localStorage.getItem("profileInfo"));
+  if (profileInfo) {
+    profileInfo.picture == undefined
+      ? null
+      : (document.getElementById("navbarPicture").src = profileInfo.picture);
+  }
 }
-window.onload = loadNavbarProfilePicture()
-
-
-
+window.onload = loadNavbarProfilePicture();
 
 // CART //
 
@@ -94,7 +104,7 @@ async function addToProductsCart(id) {
   if (productsCart.some((element) => element.id == id)) {
     productsCart.find((element) => element.id == id).count += 1;
   } else {
-  // CREATE NEW PRODUCT
+    // CREATE NEW PRODUCT
     let product = await getJSONData(PRODUCT_INFO_URL + id + ".json");
     product = {
       id: id,
@@ -146,7 +156,6 @@ function buyCart() {
   purgeCart();
 }
 
-
 // LOAD PRODUCT INFO
 
 function loadProductInfo(id) {
@@ -154,8 +163,7 @@ function loadProductInfo(id) {
   window.location = "product-info.html";
 }
 
-
-// MAKE A GET REQUEST 
+// MAKE A GET REQUEST
 
 let getJSONData = function (url) {
   let result = {};
