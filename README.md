@@ -1,6 +1,7 @@
 # eMercado eCommerce frontend
 
-eMercado is a front-end simulation of an eCommerce platform designed to showcase products across various categories. It interacts with an API to fetch product data and allows users to filter and sort items based on their preferences. The project also features a product detail page, a user login system, and a shopping cart simulation.
+eMercado is a front-end eCommerce simulation that mimics the user experience of an online store. It showcases products across various categories, with options to filter by price, category, and item count, and to sort by different criteria. Users can view detailed product pages with images, descriptions, and related items. The platform includes a simulated user login system, profile management, shopping cart, and a product review system. Product data is fetched via a simple API for a realistic browsing experience.
+
 
 ## Key Features
 
@@ -10,7 +11,8 @@ eMercado is a front-end simulation of an eCommerce platform designed to showcase
 - **User Authentication**: Simulated login system where users can create and store profiles.
 - **Carousel & Responsive Design**: A carousel for featured items and responsive layout for different screen sizes.
 - **Image Zoom**: Desktop and mobile zoom functionality for product images.
-- **Comment System**: Users can rate products and leave comments.
+- **Review System**: Users can rate products and leave comments.
+- **Form Validation**: Added client-side validation for login and user profile forms to ensure data integrity and improve the user experience.
 
 ## Demo
 
